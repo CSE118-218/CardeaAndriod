@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Extra_Sensory_Sample_APP-master.iml" filepath="$PROJECT_DIR$/Extra_Sensory_Sample_APP-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ExtraHealthy.iml" filepath="$PROJECT_DIR$/ExtraHealthy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

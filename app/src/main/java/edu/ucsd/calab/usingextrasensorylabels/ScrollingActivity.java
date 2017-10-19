@@ -82,11 +82,21 @@ public class ScrollingActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    private String _uuidPrefix = "F79807C9"; //"14E0089A";
-    private String _timestamp = "1507337798";
+    private String _uuidPrefix = null;
+    private String _timestamp = null;
+    private static final String NO_USER = "no user";
+    private static final String NO_TIMESTAMP = "no timestamp";
 
-    private void fillUserSelector() {
+    private boolean fillUserSelector() {
+        boolean haveUsers = true;
         List<String> uuidPrefixes = getUsers();
+        // first check if there are any users at all:
+        if ((uuidPrefixes == null) || (uuidPrefixes.isEmpty())) {
+            uuidPrefixes = new ArrayList<>();
+            uuidPrefixes.add(NO_USER);
+            haveUsers = false;
+        }
+
         Spinner uuidSpinner = (Spinner)findViewById(R.id.selecting_uuid_prefix);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, uuidPrefixes);
@@ -107,10 +117,19 @@ public class ScrollingActivity extends AppCompatActivity {
             }
         });
 
+        return haveUsers;
     }
 
-    private void fillTimestampSelector() {
+    private boolean fillTimestampSelector() {
+        boolean haveTimestamps = true;
         List<String> timestamps = getTimestampsForUser(_uuidPrefix);
+        // check if the user has any timestamps at all:
+        if ((timestamps == null) || (timestamps.isEmpty())) {
+            timestamps = new ArrayList<>();
+            timestamps.add(NO_TIMESTAMP);
+            haveTimestamps = false;
+        }
+
         Spinner timestampSpinner = (Spinner)findViewById(R.id.selecting_timestamp);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, timestamps);
@@ -130,6 +149,8 @@ public class ScrollingActivity extends AppCompatActivity {
 
             }
         });
+
+        return haveTimestamps;
     }
 
 
@@ -149,23 +170,30 @@ public class ScrollingActivity extends AppCompatActivity {
         CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         toolBarLayout.setTitle(getTitle());
 
-        String fileContent = readESALabelsFileForMinute(_uuidPrefix,_timestamp,true);
-        List<Pair<String,Double>> labelsAndProbs = parseServerPredictionLabelProbabilities(fileContent);
-        double[] latLong = parseLocationLatitudeLongitude(fileContent);
-
-        String latlongstr = "("+latLong.length+"): <" + latLong[0] + ", " + latLong[1] + ">";
-        String pairsStr = labelsAndProbs.size() + " labels:\n";
-        for (Pair pair : labelsAndProbs) {
-            pairsStr += pair.first + ": " + pair.second + "\n";
+        String textToPresent;
+        if (_uuidPrefix == null || _uuidPrefix == NO_USER) {
+            textToPresent = "There is no ExtraSensory user on this phone.";
         }
+        else if (_timestamp == null || _timestamp == NO_TIMESTAMP) {
+            textToPresent = "User with UUID prefix " + _uuidPrefix + " has no saved recognition files.";
+        }
+        else {
+            String fileContent = readESALabelsFileForMinute(_uuidPrefix, _timestamp, true);
+            List<Pair<String, Double>> labelsAndProbs = parseServerPredictionLabelProbabilities(fileContent);
+            double[] latLong = parseLocationLatitudeLongitude(fileContent);
 
-        String textToPresent =
-                "Timestamp: " + _timestamp + "\n\n" +
-                "Location lat long: " + latlongstr + "\n" + "----------------\n" +
-                        "Server predictions:\n" + pairsStr + "\n" + "-------------\n" +
+            String latlongstr = "(" + latLong.length + "): <" + latLong[0] + ", " + latLong[1] + ">";
+            String pairsStr = labelsAndProbs.size() + " labels:\n";
+            for (Pair pair : labelsAndProbs) {
+                pairsStr += pair.first + ": " + pair.second + "\n";
+            }
 
-                        "Timestamps:\n" + getTimestampsForUser(_uuidPrefix) + "\n" +
-                        "----------\n";
+            textToPresent =
+                    "Timestamp: " + _timestamp + "\n\n" +
+                            "Location lat long: " + latlongstr + "\n" + "----------------\n" +
+                            "Server predictions:\n" + pairsStr + "\n" + "-------------\n";
+
+        }
 
         TextView scrolledText = (TextView)findViewById(R.id.the_scrolled_text);
         scrolledText.setText(textToPresent);
