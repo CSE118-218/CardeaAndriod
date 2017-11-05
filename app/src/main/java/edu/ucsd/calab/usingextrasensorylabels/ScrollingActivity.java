@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -156,7 +157,22 @@ public class ScrollingActivity extends AppCompatActivity {
 
     private void presentContent() {
         setContentView(R.layout.activity_scrolling);
-
+        Button graphButton = (Button) findViewById(R.id.graphButton);
+        Button goalButton = (Button) findViewById(R.id.goalButton);
+        graphButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ScrollingActivity.this, ProgressActivity.class);
+                startActivity(intent);
+            }
+        });
+        goalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ScrollingActivity.this, GoalsActivity.class);
+                startActivity(intent);
+            }
+        });
         fillUserSelector();
         fillTimestampSelector();
         presentSepcificTimestampContent();
