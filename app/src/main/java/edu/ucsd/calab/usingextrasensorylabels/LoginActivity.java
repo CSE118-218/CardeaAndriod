@@ -1,75 +1,66 @@
 package edu.ucsd.calab.usingextrasensorylabels;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.gson.JsonSyntaxException;
-import com.jiuzhang.guojing.dribbbo.dribbble.Dribbble;
-import com.jiuzhang.guojing.dribbbo.dribbble.auth.Auth;
-import com.jiuzhang.guojing.dribbbo.dribbble.auth.AuthActivity;
 
-import java.io.IOException;
+public class LoginActivity extends Activity  {
+    Button b1,b2;
+    EditText ed1,ed2;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class LoginActivity extends AppCompatActivity {
-
-    @BindView(R.id.activity_login_btn)
-    TextView loginBtn;
+    TextView tx1;
+    int counter = 3;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
 
-        // load access token from shared preference
-        Cardea.init(this);
+        b1 = (Button)findViewById(R.id.button);
+        ed1 = (EditText)findViewById(R.id.editText);
+        ed2 = (EditText)findViewById(R.id.editText2);
 
-        if (!Cardea.isLoggedIn()) {
-            loginBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Auth.openAuthActivity(LoginActivity.this);
-                }
-            });
-        } else {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
+        b2 = (Button)findViewById(R.id.button2);
+        tx1 = (TextView)findViewById(R.id.textView3);
+        tx1.setVisibility(View.GONE);
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ed1.getText().toString().equals("admin") &&
+                        ed2.getText().toString().equals("admin")) {
+                    Toast.makeText(getApplicationContext(),
+                            "Redirecting...",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(LoginActivity.this, ScrollingActivity.class);
+                    startActivity(i);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
 
-        if (requestCode == Auth.REQ_CODE && resultCode == RESULT_OK) {
-            final String authCode = data.getStringExtra(AuthActivity.KEY_CODE);
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        // this is a network call and it's time consuming
-                        // that's why we're doing this in a non-UI thread
-                        String token = Auth.fetchAccessToken(authCode);
+                            tx1.setVisibility(View.VISIBLE);
+                    tx1.setBackgroundColor(Color.RED);
+                    counter--;
+                    tx1.setText(Integer.toString(counter));
 
-                        // store access token in SharedPreferences
-                        Cardea.login(LoginActivity.this, token);
-
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } catch (IOException | JsonSyntaxException e) {
-                        e.printStackTrace();
+                    if (counter == 0) {
+                        b1.setEnabled(false);
                     }
                 }
-            }).start();
-        }
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }
