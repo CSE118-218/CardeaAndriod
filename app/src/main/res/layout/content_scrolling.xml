@@ -11,7 +11,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:background="@drawable/mainpage"
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,19 +47,14 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/mainpage"
-                />
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            >
             <Button
                 android:id="@+id/graphButton"
                 android:layout_width="wrap_content"
