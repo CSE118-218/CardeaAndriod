@@ -40,11 +40,15 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class ScrollingActivity extends AppCompatActivity {
+
+    private static final int TOP_N_PROBABLE_LABLES = 5;
 
     private static final String LOG_TAG = "[Using ESA]";
 
@@ -389,11 +393,36 @@ public class ScrollingActivity extends AppCompatActivity {
                 Double prob = probArray.getDouble(i);
                 labelsAndProbabilities.add(new Pair<String, Double>(label,prob));
             }
+
+            //TODO: send this to AWS
+            //gets the top N lables every minute
+            topNLables(labelsAndProbabilities, TOP_N_PROBABLE_LABLES);
+            
             return labelsAndProbabilities;
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * Takes in list of pairs of <lables, probabilities> and returns top N(usually 5) probabilities
+     * @param labelsAndProbabilities list given to choose top n labels
+     * @param n top N labels and probabilities we want to return to update the server
+     * @return list of top N labels and probabilities
+     */
+    private List<Pair<String,Double>> topNLables(List<Pair<String,Double>> labelsAndProbabilities, int n){
+        List<Pair<String,Double>> topNlabelsAndProbabilities = new ArrayList<Pair<String,Double>>();
+        Collections.sort(topNlabelsAndProbabilities, new Comparator<Pair<String, Double>>() {
+            @Override
+            public int compare(Pair<String, Double> p1, Pair<String, Double> p2) {
+                return p1.second < p2.second? -1 : p1.second > p2.second? 1 : 0;
+            }
+        });
+        for(int i = 0; i < n; i++){
+            topNlabelsAndProbabilities.add(labelsAndProbabilities.get(i));
+        }
+        return topNlabelsAndProbabilities;
     }
 
     /**
