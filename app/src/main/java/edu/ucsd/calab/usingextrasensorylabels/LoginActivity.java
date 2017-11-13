@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Created by Alex.
+ */
 
 public class LoginActivity extends Activity  {
     Button b1,b2;
@@ -35,8 +38,8 @@ public class LoginActivity extends Activity  {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ed1.getText().toString().equals("admin") &&
-                        ed2.getText().toString().equals("admin")) {
+                if(ed1.getText().toString().equals("") &&
+                        ed2.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(),
                             "Redirecting...",Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, ScrollingActivity.class);
