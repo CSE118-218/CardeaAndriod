@@ -21,13 +21,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UUID prefix:"/>
+                android:text="UUID prefix:" />
+
             <Spinner
+                android:id="@+id/selecting_uuid_prefix"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/selecting_uuid_prefix"></Spinner>
+                android:layout_height="wrap_content"></Spinner>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,37 +38,41 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="timestamp:"/>
+                android:text="timestamp:" />
+
             <Spinner
+                android:id="@+id/selecting_timestamp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/selecting_timestamp"></Spinner>
+                android:layout_height="wrap_content"></Spinner>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/mainpage"
-                />
+                android:src="@drawable/mainpage" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/graphButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Progress"/>
+                android:text="View Progress" />
+
             <Button
                 android:id="@+id/goalButton"
-                android:text="View Goals"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="View Goals" />
         </LinearLayout>
 
         <TextView
