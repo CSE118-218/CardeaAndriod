@@ -40,6 +40,8 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -394,6 +396,26 @@ public class ScrollingActivity extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+
+    /**
+     * Takes in list of pairs of <lables, probabilities> and returns top N(usually 5) probabilities
+     * @param labelsAndProbabilities list given to choose top n labels
+     * @param n top N labels and probabilities we want to return to update the server
+     * @return list of top N labels and probabilities
+     */
+    private List<Pair<String,Double>> topNLables(List<Pair<String,Double>> labelsAndProbabilities, int n){
+        List<Pair<String,Double>> topNlabelsAndProbabilities = new ArrayList<Pair<String,Double>>();
+        Collections.sort(topNlabelsAndProbabilities, new Comparator<Pair<String, Double>>() {
+            @Override
+            public int compare(Pair<String, Double> p1, Pair<String, Double> p2) {
+                return p1.second < p2.second? -1 : p1.second > p2.second? 1 : 0;
+            }
+        });
+        for(int i = 0; i < n; i++){
+            topNlabelsAndProbabilities.add(labelsAndProbabilities.get(i));
+        }
+        return topNlabelsAndProbabilities;
     }
 
     /**
