@@ -49,7 +49,7 @@ import java.util.TreeSet;
 
 public class ScrollingActivity extends AppCompatActivity {
 
-    private static final int TOP_N_PROBABLE_LABELS = 5;
+    private static final int TOP_N_PROBABLE_LABELS = 1;
 
     private static final String LOG_TAG = "[Using ESA]";
 
@@ -407,14 +407,15 @@ public class ScrollingActivity extends AppCompatActivity {
      * Get top N probable labels from every time stamp.
      * Delete the already read files.
      */
-    private HashMap<String, List> findTopFromEachFile(){
+    private HashMap<String, String> findTopFromEachFile(){
         List<String> timeStamps = getTimestampsForUser(_uuidPrefix);
-        HashMap<String, List> timeStampTopLabels = new HashMap<>();
+        HashMap<String, String> timeStampTopLabels = new HashMap<>();
 
         for(String ts : timeStamps){
             String fileContent = readESALabelsFileForMinute(_uuidPrefix, ts, true);
             List<Pair<String, Double>> labelsAndProbs = parseServerPredictionLabelProbabilities(fileContent);
-            timeStampTopLabels.put(ts,topNLabels(labelsAndProbs,TOP_N_PROBABLE_LABELS));
+            //timeStampTopLabels.put(ts,topNLabels(labelsAndProbs,TOP_N_PROBABLE_LABELS));
+            timeStampTopLabels.put( ts, topNLabels(labelsAndProbs,TOP_N_PROBABLE_LABELS).get(0).first);
         }
 
         return timeStampTopLabels;
