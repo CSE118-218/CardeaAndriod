@@ -61,6 +61,7 @@
     <style name="AppTheme.TextView.Clickable.1" parent="AppTheme.TextView.Clickable">
         <item name="android:textSize">15sp</item>
     </style>
+
     <style name="AppTheme.TextView.Clickable.1.White" parent="AppTheme.TextView.Clickable.1">
         <item name="android:textColor">@android:color/white</item>
     </style>
@@ -68,6 +69,7 @@
     <style name="AppTheme.TextView.Clickable.2" parent="AppTheme.TextView.Clickable">
         <item name="android:textSize">17sp</item>
     </style>
+
     <style name="AppTheme.TextView.Clickable.2.White" parent="AppTheme.TextView.Clickable.2">
         <item name="android:textColor">@android:color/white</item>
     </style>
