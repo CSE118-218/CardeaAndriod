@@ -48,6 +48,8 @@ import java.util.TreeSet;
 
 public class ScrollingActivity extends AppCompatActivity {
 
+    private static final int TOP_N_PROBABLE_LABLES = 5;
+
     private static final String LOG_TAG = "[Using ESA]";
 
     public static final String ESA_BROADCAST_SAVED_PRED_FILE = "edu.ucsd.calab.extrasensory.broadcast.saved_prediction_file";
@@ -391,6 +393,11 @@ public class ScrollingActivity extends AppCompatActivity {
                 Double prob = probArray.getDouble(i);
                 labelsAndProbabilities.add(new Pair<String, Double>(label,prob));
             }
+
+            //TODO: send this to AWS
+            //gets the top N lables every minute
+            topNLables(labelsAndProbabilities, TOP_N_PROBABLE_LABLES);
+            
             return labelsAndProbabilities;
         } catch (JSONException e) {
             e.printStackTrace();
