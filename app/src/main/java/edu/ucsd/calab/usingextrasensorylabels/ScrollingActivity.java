@@ -44,8 +44,19 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 public class ScrollingActivity extends AppCompatActivity {
 
@@ -64,15 +75,60 @@ public class ScrollingActivity extends AppCompatActivity {
                 Log.d(LOG_TAG,"Caught broadcast for new timestamp: " + newTimestamp);
                 _timestamp = newTimestamp;
                 presentContent();
-                findTopFromEachFile();
+                pushToServer();
             }
         }
     };
 
+    private void pushToServer() {
+        //HashMap<String, String> map = findTopFromEachFile();
+
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("201312414", "walk");
+        JSONObject json = new JSONObject(map);
+
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "localhost:9999/update";
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                url, json,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d("response", response.toString());
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("error", "Error: " + error.getMessage());
+
+            }
+        }) {
+
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+
+
+        };
+        queue.add(jsonObjReq);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presentContent();
+        pushToServer();
     }
 
     @Override
