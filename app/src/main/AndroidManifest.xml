@@ -39,6 +39,7 @@
                 </action>
             </intent-filter>
         </receiver>
+
         <activity android:name=".NoteActivity" />
     </application>
 
