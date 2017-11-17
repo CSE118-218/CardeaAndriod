@@ -70,17 +70,46 @@
             android:layout_gravity="bottom">
 
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
+
             <Button
                 android:id="@+id/graphButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Progress" />
+                android:text="Progress"
+                android:background="#3498DB"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/noteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note"
+                android:background="#3498DB"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/goalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Goals" />
+                android:text="Goals"
+                android:background="#3498DB"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <TextView
