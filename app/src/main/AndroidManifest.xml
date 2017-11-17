@@ -38,6 +38,8 @@
                 </action>
             </intent-filter>
         </receiver>
-   </application>
+
+        <activity android:name=".NoteActivity" />
+    </application>
 
 </manifest>
