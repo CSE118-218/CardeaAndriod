@@ -10,7 +10,7 @@
         android:paddingBottom="18dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:background="#colorPrimaryDark">
+        android:background="#303F9F">
 
 
         <TextView
@@ -66,8 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#34495E"
-        android:textColor="@android:color/white"
-        android:text="Note" />
+        android:text="Cardea Map"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>
 
