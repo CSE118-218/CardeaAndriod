@@ -57,7 +57,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
+import android.os.Vibrator;
 public class ScrollingActivity extends AppCompatActivity {
 
     private static final int TOP_N_PROBABLE_LABELS = 1;
@@ -75,7 +75,7 @@ public class ScrollingActivity extends AppCompatActivity {
                 Log.d(LOG_TAG,"Caught broadcast for new timestamp: " + newTimestamp);
                 _timestamp = newTimestamp;
                 presentContent();
-                pushToServer();
+                //pushToServer();
             }
         }
     };
@@ -90,7 +90,7 @@ public class ScrollingActivity extends AppCompatActivity {
 
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "localhost:9999/update";
+        String url = "http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/poll/";
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
                 url, json,
@@ -98,6 +98,9 @@ public class ScrollingActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONObject response) {
+                        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 400 milliseconds
+                        v.vibrate(400);
                         Log.d("response", response.toString());
 
                     }
