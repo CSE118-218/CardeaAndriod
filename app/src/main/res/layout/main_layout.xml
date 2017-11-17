@@ -10,7 +10,7 @@
         android:paddingBottom="18dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:background="#colorPrimaryDark">
+        android:background="#303F9F">
 
 
         <TextView

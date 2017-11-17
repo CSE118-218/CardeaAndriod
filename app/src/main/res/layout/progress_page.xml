@@ -7,4 +7,19 @@
         android:textSize="30pt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:progressDrawable="@drawable/progress_bar"
+        android:progress="0"/>
+
+    <Button
+        android:id="@+id/progressButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Click for progres" />
+
 </LinearLayout>

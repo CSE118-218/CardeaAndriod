@@ -29,7 +29,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".GoalsActivity"/>
         <activity android:name=".ProgressActivity"/>
 
@@ -39,14 +38,6 @@
                 </action>
             </intent-filter>
         </receiver>
-
-
-
-=======
-        <activity android:name=".GoalsActivity" />
-        <activity android:name=".ProgressActivity" />
-        <activity android:name=".NoteActivity" />
->>>>>>> a25f67a237bfa0ee7db318b1e7238e5c7f4f89d3
-    </application>
+   </application>
 
 </manifest>
