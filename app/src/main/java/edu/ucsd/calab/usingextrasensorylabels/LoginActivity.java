@@ -42,7 +42,7 @@ public class LoginActivity extends Activity  {
                         ed2.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(),
                             "Redirecting...",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginActivity.this, ScrollingActivity.class);
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(i);
                 }else{
                     Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();

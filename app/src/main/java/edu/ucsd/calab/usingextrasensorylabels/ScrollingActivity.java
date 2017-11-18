@@ -221,8 +221,9 @@ public class ScrollingActivity extends AppCompatActivity {
 
 
     private void presentContent() {
+
         setContentView(R.layout.activity_scrolling);
-        Button graphButton = (Button) findViewById(R.id.graphButton);
+     /*   Button graphButton = (Button) findViewById(R.id.graphButton);
         Button noteButton = (Button) findViewById(R.id.noteButton);
         Button goalButton = (Button) findViewById(R.id.goalButton);
         graphButton.setOnClickListener(new View.OnClickListener() {
@@ -246,6 +247,7 @@ public class ScrollingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+*/
         fillUserSelector();
         fillTimestampSelector();
         presentSepcificTimestampContent();
