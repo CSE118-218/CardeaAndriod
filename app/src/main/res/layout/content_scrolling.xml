@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="bottom"
-        android:background="@drawable/mainpage"
+
         >
 
         <LinearLayout
@@ -50,7 +50,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <!-- <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
@@ -61,34 +61,63 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
 
-            android:orientation="horizontal"
-            android:gravity="bottom"
-            android:layout_gravity="bottom">
+                  android:orientation="horizontal"
+                  android:gravity="bottom"
+                  android:layout_gravity="bottom">
 
 
-            <Button
-                android:id="@+id/graphButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View Progress" />
+                  <View
+                      android:layout_width="0dp"
+                      android:layout_height="50dp"
+                      android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/goalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View Goals" />
-        </LinearLayout>
+                  <Button
+                      android:id="@+id/graphButton"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Progress"
+                      android:background="#3498DB"/>
 
-        <TextView
-            android:id="@+id/the_scrolled_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="@string/large_text" />
-    </LinearLayout>
+                  <View
+                      android:layout_width="0dp"
+                      android:layout_height="50dp"
+                      android:layout_weight="1" />
 
-</android.support.v4.widget.NestedScrollView>
+                  <Button
+                      android:id="@+id/noteButton"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Note"
+                      android:background="#3498DB"/>
+
+                  <View
+                      android:layout_width="0dp"
+                      android:layout_height="50dp"
+                      android:layout_weight="1" />
+
+                  <Button
+                      android:id="@+id/goalButton"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Goals"
+                      android:background="#3498DB"/>
+
+                  <View
+                      android:layout_width="0dp"
+                      android:layout_height="50dp"
+                      android:layout_weight="1" />
+              </LinearLayout>   -->
+
+              <TextView
+                  android:id="@+id/the_scrolled_text"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="@dimen/text_margin"
+                  android:text="@string/large_text" />
+          </LinearLayout>
+
+      </android.support.v4.widget.NestedScrollView>

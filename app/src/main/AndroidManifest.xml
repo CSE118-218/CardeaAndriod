@@ -3,6 +3,8 @@
     package="edu.ucsd.calab.usingextrasensorylabels">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -11,17 +13,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ScrollingActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".LoginActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         <activity android:name=".GoalsActivity"/>
         <activity android:name=".ProgressActivity"/>
+
+        <receiver android:name=".serverConnection">
+            <intent-filter>
+                <action android:name="edu.ucsd.calab.extrasensory.broadcast.saved_prediction_file">
+                </action>
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".NoteActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

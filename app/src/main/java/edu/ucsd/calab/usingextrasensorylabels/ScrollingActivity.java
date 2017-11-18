@@ -44,9 +44,20 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import android.os.Vibrator;
 public class ScrollingActivity extends AppCompatActivity {
 
     private static final int TOP_N_PROBABLE_LABELS = 1;
@@ -64,15 +75,63 @@ public class ScrollingActivity extends AppCompatActivity {
                 Log.d(LOG_TAG,"Caught broadcast for new timestamp: " + newTimestamp);
                 _timestamp = newTimestamp;
                 presentContent();
-                findTopFromEachFile();
+                //pushToServer();
             }
         }
     };
 
+    private void pushToServer() {
+        //HashMap<String, String> map = findTopFromEachFile();
+
+
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("201312414", "walk");
+        JSONObject json = new JSONObject(map);
+
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/poll/";
+
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                url, json,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                        // Vibrate for 400 milliseconds
+                        v.vibrate(400);
+                        Log.d("response", response.toString());
+
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("error", "Error: " + error.getMessage());
+
+            }
+        }) {
+
+            /**
+             * Passing some request headers
+             */
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json; charset=utf-8");
+                return headers;
+            }
+
+
+        };
+        queue.add(jsonObjReq);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presentContent();
+        pushToServer();
     }
 
     @Override
@@ -162,13 +221,22 @@ public class ScrollingActivity extends AppCompatActivity {
 
 
     private void presentContent() {
+
         setContentView(R.layout.activity_scrolling);
-        Button graphButton = (Button) findViewById(R.id.graphButton);
+     /*   Button graphButton = (Button) findViewById(R.id.graphButton);
+        Button noteButton = (Button) findViewById(R.id.noteButton);
         Button goalButton = (Button) findViewById(R.id.goalButton);
         graphButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ScrollingActivity.this, ProgressActivity.class);
+                startActivity(intent);
+            }
+        });
+        noteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ScrollingActivity.this, NoteActivity.class);
                 startActivity(intent);
             }
         });
@@ -179,6 +247,7 @@ public class ScrollingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+*/
         fillUserSelector();
         fillTimestampSelector();
         presentSepcificTimestampContent();

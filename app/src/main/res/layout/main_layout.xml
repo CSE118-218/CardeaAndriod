@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:background="#303F9F">
+
+
+        <TextView
+            android:id="@+id/text_view_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:text="Want More Walking?"
+            android:textColor="@android:color/white"/>
+
+    </FrameLayout>
+
+
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/goalButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1ABC9C"
+        android:textColor="@android:color/white"
+        android:text="Goals" />
+
+    <Button
+        android:id="@+id/graphButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3498DB"
+        android:textColor="@android:color/white"
+        android:text="Progress" />
+
+    <Button
+        android:id="@+id/noteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#34495E"
+        android:text="statistics"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
+
