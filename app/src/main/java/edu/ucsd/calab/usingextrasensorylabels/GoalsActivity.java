@@ -18,6 +18,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+import org.json.JSONObject;
+import java.util.*;
+
+
 
 /** SharedPreferences */
 
@@ -37,6 +41,12 @@ public class GoalsActivity extends Activity implements OnClickListener {
 
         CheckBox checkBox5;
         EditText editText5;
+
+        String walkingTime;
+        String runningTime;
+        String sittingTime;
+        String standingTime;
+        String lyingDownTime;
 
         Button button;
 
@@ -267,34 +277,45 @@ public class GoalsActivity extends Activity implements OnClickListener {
                     .getDefaultSharedPreferences(this);
             boolean checkBoxValue1 = sharedPreferences.getBoolean("CheckBox_Value1", false);
             if (checkBoxValue1) {
-                String walkingTime = sharedPreferences.getString("Walking", "0");
+                walkingTime = sharedPreferences.getString("Walking", "0");
             } else {
-                String walkingTime = "0";
+                walkingTime = "0";
             }
             boolean checkBoxValue2 = sharedPreferences.getBoolean("CheckBox_Value2", false);
             if (checkBoxValue2) {
-                String runningTime = sharedPreferences.getString("Running", "0");
+                runningTime = sharedPreferences.getString("Running", "0");
             } else {
-                String runningTime = "0";
+                runningTime = "0";
             }
             boolean checkBoxValue3 = sharedPreferences.getBoolean("CheckBox_Value3", false);
             if (checkBoxValue3) {
-                String sittingTime = sharedPreferences.getString("Sitting", "0");
+                sittingTime = sharedPreferences.getString("Sitting", "0");
             } else {
-                String sittingTime = "0";
+                sittingTime = "0";
             }
             boolean checkBoxValue4 = sharedPreferences.getBoolean("CheckBox_Value4", false);
             if (checkBoxValue4) {
-                String standingTime = sharedPreferences.getString("Standing", "0");
+                standingTime = sharedPreferences.getString("Standing", "0");
             } else {
-                String standingTime = "0";
+                standingTime = "0";
             }
             boolean checkBoxValue5 = sharedPreferences.getBoolean("CheckBox_Value5", false);
             if (checkBoxValue5) {
-                String lyingDownTime = sharedPreferences.getString("Lying_Down", "0");
+                lyingDownTime = sharedPreferences.getString("Lying_Down", "0");
             } else {
-                String lyingDownTime = "0";
+                lyingDownTime = "0";
             }
+
+            /** hasmap goaltime saved as string*/
+            Map<String, String> goalMap = new HashMap<>();
+            goalMap.put("Walking",walkingTime);
+            goalMap.put("Running",runningTime);
+            goalMap.put("Sitting",sittingTime);
+            goalMap.put("Standing",standingTime);
+            goalMap.put("Lying_Down",lyingDownTime);
+
+            /** json goaltime saved as string*/
+            JSONObject goalJson = new JSONObject(goalMap);
 
 
 
