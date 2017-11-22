@@ -69,5 +69,13 @@
         android:text="statistics"
         android:textColor="@android:color/white" />
 
+    <Button
+        android:id="@+id/profileButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#16A085"
+        android:text="Profile"
+        android:textColor="@android:color/white" />
+
 </LinearLayout>
 
