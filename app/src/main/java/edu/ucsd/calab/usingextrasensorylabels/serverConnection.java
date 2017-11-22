@@ -23,7 +23,7 @@ public class serverConnection extends BroadcastReceiver {
             Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 400 milliseconds
             Log.i("vibarate", "received vibarate");
-            v.vibrate(400);
+            v.vibrate(0);
         }
         pushToServer();
     }
