@@ -33,7 +33,7 @@
         <activity android:name=".GoalsActivity"/>
         <activity android:name=".ProgressActivity"/>
 
-        <receiver android:name=".serverConnection">
+        <receiver android:name="serverConnection">
             <intent-filter>
                 <action android:name="edu.ucsd.calab.extrasensory.broadcast.saved_prediction_file">
                 </action>
