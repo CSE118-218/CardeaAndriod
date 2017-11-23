@@ -81,51 +81,25 @@ public class ScrollingActivity extends AppCompatActivity {
     };
 
     private void pushToServer() {
-        //HashMap<String, String> map = findTopFromEachFile();
-
-
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("201312414", "walk");
-        JSONObject json = new JSONObject(map);
-
-
+        Log.i("push to server", "push");
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/poll/";
-
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
-                url, json,
-                new Response.Listener<JSONObject>() {
-
+        String url ="http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/poll";
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                        // Vibrate for 400 milliseconds
-                        v.vibrate(400);
-                        Log.d("response", response.toString());
-
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                       Log.i("response", response.toString());
                     }
                 }, new Response.ErrorListener() {
-
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.d("error", "Error: " + error.getMessage());
 
             }
-        }) {
+        });
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
 
-            /**
-             * Passing some request headers
-             */
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("Content-Type", "application/json; charset=utf-8");
-                return headers;
-            }
-
-
-        };
-        queue.add(jsonObjReq);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +128,7 @@ public class ScrollingActivity extends AppCompatActivity {
     private static final String NO_TIMESTAMP = "no timestamp";
 
     private boolean fillUserSelector() {
+        pushToServer();
         boolean haveUsers = true;
         List<String> uuidPrefixes = getUsers();
         // first check if there are any users at all:
@@ -187,6 +162,7 @@ public class ScrollingActivity extends AppCompatActivity {
     }
 
     private boolean fillTimestampSelector() {
+        pushToServer();
         boolean haveTimestamps = true;
         List<String> timestamps = getTimestampsForUser(_uuidPrefix);
         // check if the user has any timestamps at all:
