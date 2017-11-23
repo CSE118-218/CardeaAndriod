@@ -148,6 +148,13 @@
 
     </LinearLayout>
 
+
+    <WebView
+        android:id="@+id/strock_tips"
+        android:layout_width="match_parent"
+        android:layout_height="226dp" />
+
+
     <View
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -161,5 +168,5 @@
         android:layout_height="wrap_content"
         android:background="#1ABC9C"
         android:textColor="@android:color/white"
-        android:text="Click for Progres Demo" />
+        android:text="Click for Progress Demo" />
 </LinearLayout>

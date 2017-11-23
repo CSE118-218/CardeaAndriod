@@ -3,6 +3,8 @@ package edu.ucsd.calab.usingextrasensorylabels;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -50,10 +52,14 @@ public class GoalsActivity extends Activity implements OnClickListener {
 
         Button button;
 
+
+
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.goals_page);
+
 
             checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
             editText1 = (EditText) findViewById(R.id.editText1);
@@ -74,6 +80,17 @@ public class GoalsActivity extends Activity implements OnClickListener {
             button.setOnClickListener(this);
 
 
+
+            final Button callButton = (Button) findViewById(R.id.stroke_call);
+            callButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialContactPhone("18007876537");
+
+
+                }
+            });
+
             loadSavedPreferences1();
             loadSavedPreferences2();
             loadSavedPreferences3();
@@ -83,6 +100,13 @@ public class GoalsActivity extends Activity implements OnClickListener {
             updateGoalstoSever();
 
         }
+
+
+
+        private void dialContactPhone(final String phoneNumber) {
+            startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)));
+        }
+
 
         private void loadSavedPreferences1() {
             SharedPreferences sharedPreferences = PreferenceManager
@@ -316,7 +340,6 @@ public class GoalsActivity extends Activity implements OnClickListener {
 
             /** json goaltime saved as string*/
             JSONObject goalJson = new JSONObject(goalMap);
-
 
 
 
