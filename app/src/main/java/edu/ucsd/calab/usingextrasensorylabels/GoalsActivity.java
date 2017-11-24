@@ -19,6 +19,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONObject;
 import java.util.*;
@@ -60,6 +61,10 @@ public class GoalsActivity extends Activity implements OnClickListener {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.goals_page);
 
+
+            // animate the stroke tips in the goal page
+            TextView tv = (TextView) this.findViewById(R.id.stroke_animated_tips);
+            tv.setSelected(true);  // Set focus to the textview
 
             checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
             editText1 = (EditText) findViewById(R.id.editText1);
