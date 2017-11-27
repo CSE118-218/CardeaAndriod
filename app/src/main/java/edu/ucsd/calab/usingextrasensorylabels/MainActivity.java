@@ -1,6 +1,7 @@
 package edu.ucsd.calab.usingextrasensorylabels;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,7 +32,31 @@ public class MainActivity extends AppCompatActivity {
         final Button motorSkillsButton = (Button) findViewById(R.id.motorSkillsButton);
         final Button lifeStyleButton = (Button) findViewById(R.id.lifeStyleButton);
 
+        cognitiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.lumosity.com"));
+                startActivity(browserIntent);
+            }
+        });
+        lifeStyleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.cozycal.com/"));
+                startActivity(browserIntent);
+            }
+        });
+        motorSkillsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.rstgames.balloons&hl=en"));
+                startActivity(browserIntent);
+            }
+        });
 
+
+
+        //https://www.cozycal.com/
 
         final Button button1 = (Button) findViewById(R.id.goalButton);
         button1.setOnClickListener(new View.OnClickListener() {
