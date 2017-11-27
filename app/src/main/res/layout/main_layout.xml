@@ -51,17 +51,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="1">
             <Button
                 android:id="@+id/walkingButton"
-                android:layout_width="200dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="200dp"
                 android:text="Walk Around"
                 android:textColor="@android:color/white"
                 />
             <Button
                 android:id="@+id/cognitiveButton"
-                android:layout_width="200dp"
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:text="Cognitive Games"
                 android:textColor="@android:color/white"
@@ -70,19 +73,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="1">
             <Button
                 android:id="@+id/motorSkillsButton"
-                android:layout_width="200dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="200dp"
                 android:text="Motor Skills"
                 android:textColor="@android:color/white"
                 />
             <Button
                 android:id="@+id/lifeStyleButton"
-                android:layout_width="200dp"
+                android:layout_weight="0.5"
+                android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:text="Life Style"
+
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
