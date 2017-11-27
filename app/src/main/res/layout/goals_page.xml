@@ -187,10 +187,35 @@
             android:textSize="12pt" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/stroke_call"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/loginBackground"
+        android:text="Click Here Call National Stroke Association For Stroke Recover Exercise Suggestions"
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/stroke_animated_tips"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:gravity="center"
+        android:background="#3498DB"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="According to CDC, Stroke is Preventable!  Do the following: Check your blood pressure  Stop smoking  Get moving  Eat healthfully  Lose weight  "
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
+
     <View
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="#3498DB"/>
 
     <Button
         android:id="@+id/button1"
