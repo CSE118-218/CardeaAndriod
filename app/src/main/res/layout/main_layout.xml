@@ -52,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="#1ABC9C"
             android:weightSum="1">
             <Button
                 android:id="@+id/walkingButton"
@@ -59,6 +60,7 @@
                 android:layout_weight="0.5"
                 android:layout_height="200dp"
                 android:text="Walk Around"
+                android:background="#1ABC9C"
                 android:textColor="@android:color/white"
                 />
             <Button
@@ -67,6 +69,7 @@
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:text="Cognitive Games"
+                android:background="#3498DB"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
@@ -81,6 +84,7 @@
                 android:layout_weight="0.5"
                 android:layout_height="200dp"
                 android:text="Motor Skills"
+                android:background="#34495E"
                 android:textColor="@android:color/white"
                 />
             <Button
@@ -88,8 +92,8 @@
                 android:layout_weight="0.5"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
+                android:background="#16A085"
                 android:text="Life Style"
-
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
