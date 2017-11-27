@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
 
+        final Button walkButton = (Button) findViewById(R.id.walkingButton);
+        final Button cognitiveButton = (Button) findViewById(R.id.cognitiveButton);
+        final Button motorSkillsButton = (Button) findViewById(R.id.motorSkillsButton);
+        final Button lifeStyleButton = (Button) findViewById(R.id.lifeStyleButton);
+
+
 
         final Button button1 = (Button) findViewById(R.id.goalButton);
         button1.setOnClickListener(new View.OnClickListener() {
