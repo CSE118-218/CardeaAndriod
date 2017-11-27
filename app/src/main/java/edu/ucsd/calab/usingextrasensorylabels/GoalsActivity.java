@@ -22,6 +22,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONObject;
 import java.util.*;
 
@@ -102,8 +111,6 @@ public class GoalsActivity extends Activity implements OnClickListener {
             loadSavedPreferences3();
             loadSavedPreferences4();
             loadSavedPreferences5();
-
-            updateGoalstoSever();
 
         }
 
@@ -296,6 +303,7 @@ public class GoalsActivity extends Activity implements OnClickListener {
 
         Toast.makeText(getApplicationContext(),
                 "Goals Updated",Toast.LENGTH_SHORT).show();
+        updateGoalstoSever();
 
         }
 
@@ -354,10 +362,24 @@ public class GoalsActivity extends Activity implements OnClickListener {
                 Log.i("invalid user", user);
             }
 
+            RequestQueue queue = Volley.newRequestQueue(this);
+            String url ="http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/activity/goal";
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                    url, goalJson,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.i("response", response.toString());
+                            //  YOUR RESPONSE
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
 
-
-
-
+                }
+            });
+            queue.add(jsonObjReq);
         }
 
 }
