@@ -40,8 +40,8 @@
         </receiver>
 
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".NoteActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".MapActivity" />
     </application>
 
 </manifest>
