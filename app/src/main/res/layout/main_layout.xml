@@ -60,7 +60,7 @@
                 android:layout_weight="0.5"
                 android:layout_height="200dp"
                 android:text="Walk Around"
-                android:textSize="22dp"
+                android:textSize="15dp"
                 android:background="#512DA8"
                 android:textColor="@android:color/white"
                 />
@@ -70,7 +70,7 @@
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:text="Cognitive Games"
-                android:textSize="22dp"
+                android:textSize="15dp"
                 android:background="#3498DB"
                 android:textColor="@android:color/white"
                 />
@@ -86,7 +86,7 @@
                 android:layout_weight="0.5"
                 android:layout_height="200dp"
                 android:text="Motor Skills"
-                android:textSize="22dp"
+                android:textSize="15dp"
                 android:background="#34495E"
                 android:textColor="@android:color/white"
                 />
@@ -97,7 +97,7 @@
                 android:layout_height="200dp"
                 android:background="#512DA8"
                 android:text="Life Style"
-                android:textSize="22dp"
+                android:textSize="15dp"
                 android:textColor="@android:color/white"
                 />
         </LinearLayout>
