@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="edu.ucsd.calab.usingextrasensorylabels.ScrollingActivity"
-    tools:showIn="@layout/activity_scrolling">
+    tools:showIn="@layout/activity_scrolling"
+    android:background="@color/loginBackground">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="bottom"
-
         >
 
         <LinearLayout
@@ -24,7 +24,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UUID prefix:" />
+                android:text="UUID prefix:"
+                android:textColor="#FFFFFF"/>
 
             <Spinner
                 android:id="@+id/selecting_uuid_prefix"
@@ -41,7 +42,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="timestamp:" />
+                android:text="timestamp:"
+                android:textColor="#FFFFFF"
+                />
 
             <Spinner
                 android:id="@+id/selecting_timestamp"
@@ -117,7 +120,8 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_margin="@dimen/text_margin"
-                  android:text="@string/large_text" />
+                  android:text="@string/large_text"
+                  android:textColor="#FFFFFF"/>
           </LinearLayout>
 
       </android.support.v4.widget.NestedScrollView>
