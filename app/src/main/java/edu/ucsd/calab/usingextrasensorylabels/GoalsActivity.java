@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.app.Activity;
@@ -312,10 +313,18 @@ public class GoalsActivity extends Activity implements OnClickListener {
             goalMap.put("running",runningTime);
             goalMap.put("sitting",sittingTime);
             goalMap.put("standing",standingTime);
-            goalMap.put("lying_down",lyingDownTime);
+            goalMap.put("lyingDown",lyingDownTime);
 
             /** json goaltime saved as string*/
             JSONObject goalJson = new JSONObject(goalMap);
+            String user = new String("admin");
+            try {
+                goalJson.put("user", user);
+            }
+            catch (Exception e) {
+                Log.i("invalid user", user);
+            }
+
 
 
 
