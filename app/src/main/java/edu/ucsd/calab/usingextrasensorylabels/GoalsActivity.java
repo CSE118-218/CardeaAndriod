@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.app.Activity;
@@ -21,6 +22,15 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.json.JSONObject;
 import java.util.*;
 
@@ -101,8 +111,6 @@ public class GoalsActivity extends Activity implements OnClickListener {
             loadSavedPreferences3();
             loadSavedPreferences4();
             loadSavedPreferences5();
-
-            updateGoalstoSever();
 
         }
 
@@ -295,6 +303,7 @@ public class GoalsActivity extends Activity implements OnClickListener {
 
         Toast.makeText(getApplicationContext(),
                 "Goals Updated",Toast.LENGTH_SHORT).show();
+        updateGoalstoSever();
 
         }
 
@@ -341,14 +350,36 @@ public class GoalsActivity extends Activity implements OnClickListener {
             goalMap.put("running",runningTime);
             goalMap.put("sitting",sittingTime);
             goalMap.put("standing",standingTime);
-            goalMap.put("lying_down",lyingDownTime);
+            goalMap.put("lyingDown",lyingDownTime);
 
             /** json goaltime saved as string*/
             JSONObject goalJson = new JSONObject(goalMap);
+            String user = new String("admin");
+            try {
+                goalJson.put("user", user);
+            }
+            catch (Exception e) {
+                Log.i("invalid user", user);
+            }
 
+            RequestQueue queue = Volley.newRequestQueue(this);
+            String url ="http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/activity/goal";
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                    url, goalJson,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.i("response", response.toString());
+                            //  YOUR RESPONSE
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
 
-
-
+                }
+            });
+            queue.add(jsonObjReq);
         }
 
 }

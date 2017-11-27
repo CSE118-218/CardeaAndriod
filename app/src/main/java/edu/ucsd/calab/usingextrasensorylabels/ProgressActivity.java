@@ -100,7 +100,7 @@ public class ProgressActivity extends AppCompatActivity {
 
 
 
-/*
+
 
                 // new gson object
                 Gson gson = new Gson();
@@ -130,23 +130,23 @@ public class ProgressActivity extends AppCompatActivity {
                 progressBar3.setProgress((progress3/goal3)*100);
                 progressBar4.setProgress((progress4/goal4)*100);
                 progressBar5.setProgress((progress5/goal5)*100);
-*/
 
 
-              progressBar1.setProgress(prog1);
-                prog1 = prog1+5;
-
-                progressBar2.setProgress(prog2);
-                prog2 = prog2+10;
-
-                progressBar3.setProgress(prog3);
-                prog3 = prog3+17;
-
-                progressBar4.setProgress(prog4);
-                prog4 = prog4+22;
-
-                progressBar5.setProgress(prog5);
-                prog5 = prog5+11;
+//
+//              progressBar1.setProgress(prog1);
+//                prog1 = prog1+5;
+//
+//                progressBar2.setProgress(prog2);
+//                prog2 = prog2+10;
+//
+//                progressBar3.setProgress(prog3);
+//                prog3 = prog3+17;
+//
+//                progressBar4.setProgress(prog4);
+//                prog4 = prog4+22;
+//
+//                progressBar5.setProgress(prog5);
+//                prog5 = prog5+11;
             }
         });
     }
