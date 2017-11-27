@@ -101,52 +101,52 @@ public class ProgressActivity extends AppCompatActivity {
 
 
 
+//TODO:                  uncomment when pushing/merging
 
-                // new gson object
-                Gson gson = new Gson();
-
-                //      phase current json to java objects
-
-                GsonPhaser progressCurrent = gson.fromJson("", GsonPhaser.class);
-
-                //      phase goal json to java objects
-                GsonPhaser progressUpdate = gson.fromJson("", GsonPhaser.class);
-
-                progress1 = progressCurrent.walking().intValue();
-                progress2 = progressCurrent.running().intValue();
-                progress3 = progressCurrent.sitting().intValue();
-                progress4 = progressCurrent.standing().intValue();
-                progress5 = progressCurrent.lying().intValue();
-
-                goal1 = progressUpdate.walking().intValue();
-                goal2 = progressUpdate.running().intValue();
-                goal3 = progressUpdate.sitting().intValue();
-                goal4 = progressUpdate.standing().intValue();
-                goal5 = progressUpdate.lying().intValue();
-
-
-                progressBar1.setProgress((progress1/goal1)*100);
-                progressBar2.setProgress((progress2/goal2)*100);
-                progressBar3.setProgress((progress3/goal3)*100);
-                progressBar4.setProgress((progress4/goal4)*100);
-                progressBar5.setProgress((progress5/goal5)*100);
-
-
+//                // new gson object
+//                Gson gson = new Gson();
 //
-//              progressBar1.setProgress(prog1);
-//                prog1 = prog1+5;
+//                //      phase current json to java objects
 //
-//                progressBar2.setProgress(prog2);
-//                prog2 = prog2+10;
+//                GsonPhaser progressCurrent = gson.fromJson("", GsonPhaser.class);
 //
-//                progressBar3.setProgress(prog3);
-//                prog3 = prog3+17;
+//                //      phase goal json to java objects
+//                GsonPhaser progressUpdate = gson.fromJson("", GsonPhaser.class);
+//                progress1 = progressCurrent.walking().intValue();
+//                progress2 = progressCurrent.running().intValue();
+//                progress3 = progressCurrent.sitting().intValue();
+//                progress4 = progressCurrent.standing().intValue();
+//                progress5 = progressCurrent.lying().intValue();
 //
-//                progressBar4.setProgress(prog4);
-//                prog4 = prog4+22;
+//                goal1 = progressUpdate.walking().intValue();
+//                goal2 = progressUpdate.running().intValue();
+//                goal3 = progressUpdate.sitting().intValue();
+//                goal4 = progressUpdate.standing().intValue();
+//                goal5 = progressUpdate.lying().intValue();
 //
-//                progressBar5.setProgress(prog5);
-//                prog5 = prog5+11;
+//
+//                progressBar1.setProgress((progress1/goal1)*100);
+//                progressBar2.setProgress((progress2/goal2)*100);
+//                progressBar3.setProgress((progress3/goal3)*100);
+//                progressBar4.setProgress((progress4/goal4)*100);
+//                progressBar5.setProgress((progress5/goal5)*100);
+
+
+
+              progressBar1.setProgress(prog1);
+                prog1 = prog1+5;
+
+                progressBar2.setProgress(prog2);
+                prog2 = prog2+10;
+
+                progressBar3.setProgress(prog3);
+                prog3 = prog3+17;
+
+                progressBar4.setProgress(prog4);
+                prog4 = prog4+22;
+
+                progressBar5.setProgress(prog5);
+                prog5 = prog5+11;
             }
         });
     }
