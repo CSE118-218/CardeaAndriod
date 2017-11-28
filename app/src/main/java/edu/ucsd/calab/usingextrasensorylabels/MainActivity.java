@@ -88,15 +88,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final Button button4 = (Button) findViewById(R.id.profileButton);
-        button4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(i);
-
-            }
-        });
+//        final Button button4 = (Button) findViewById(R.id.profileButton);
+//        button4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+//                startActivity(i);
+//
+//            }
+//        });
 
         final Button gmapButton = (Button) findViewById(R.id.walkingButton);
         gmapButton.setOnClickListener(new View.OnClickListener() {
