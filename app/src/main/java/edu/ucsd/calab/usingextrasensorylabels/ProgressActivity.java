@@ -24,7 +24,7 @@ import java.util.Map;
 
 public class ProgressActivity extends AppCompatActivity {
 
-    private Double progress1;
+    public Double progress1;
     private Double progress2;
     private Double progress3;
     private Double progress4;

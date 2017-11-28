@@ -5,21 +5,21 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="18dp"
+        android:layout_height="118dp"
+        android:background="#303F9F"
         android:paddingBottom="18dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:background="#303F9F">
+        android:paddingTop="18dp">
 
 
         <TextView
             android:id="@+id/text_view_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14pt"
             android:text="Hello William"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white"
+            android:textSize="14pt" />
 
     </FrameLayout>
 
