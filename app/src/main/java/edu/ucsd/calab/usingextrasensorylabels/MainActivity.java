@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
 
-        final Button walkButton = (Button) findViewById(R.id.walkingButton);
+
         final Button cognitiveButton = (Button) findViewById(R.id.cognitiveButton);
         final Button motorSkillsButton = (Button) findViewById(R.id.motorSkillsButton);
         final Button lifeStyleButton = (Button) findViewById(R.id.lifeStyleButton);
@@ -93,6 +93,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+        final Button gmapButton = (Button) findViewById(R.id.walkingButton);
+        gmapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, MapActivity.class);
                 startActivity(i);
 
             }
