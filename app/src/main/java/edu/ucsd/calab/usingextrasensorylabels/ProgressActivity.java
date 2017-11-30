@@ -3,6 +3,7 @@ package edu.ucsd.calab.usingextrasensorylabels;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -10,10 +11,20 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,6 +62,39 @@ public class ProgressActivity extends AppCompatActivity {
     private int prog5 = 5;
 
     private WebView strockTips;
+
+    public void updateUI(String g, String p) throws ParseException, JSONException{
+
+
+        // get current and goal json from sever
+        // new gson object
+        JSONParser parser = new JSONParser();
+        JSONObject goal = (JSONObject) parser.parse(g);
+        JSONObject progress = (JSONObject) parser.parse(p);
+        //      phase current json to java objects
+
+        progress1 = goal.getDouble("walking");
+        progress2 = goal.getDouble("running");
+        progress3 = goal.getDouble("sitting");
+        progress4 = goal.getDouble("standing");
+        progress5 = goal.getDouble("lyingDown");
+
+        goal1 = progress.getDouble("walking");
+        goal2 = progress.getDouble("running");
+        goal3 = progress.getDouble("sitting");
+        goal4 = progress.getDouble("standing");
+        goal5 = progress.getDouble("lyingDown");
+
+
+        progressBar1.setProgress((int)(progress1/goal1)*100);
+        progressBar2.setProgress((int)(progress2/goal2)*100);
+        progressBar3.setProgress((int)(progress3/goal3)*100);
+        progressBar4.setProgress((int)(progress4/goal4)*100);
+        progressBar5.setProgress((int)(progress5/goal5)*100);
+
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,41 +139,8 @@ public class ProgressActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                update();
 
-                // get current and goal json from sever
-
-
-
-
-
-                // new gson object
-                Gson gson = new Gson();
-
-                //      phase current json to java objects
-
-                GsonPhaser progressCurrent = gson.fromJson("", GsonPhaser.class);
-
-                //      phase goal json to java objects
-                GsonPhaser progressUpdate = gson.fromJson("", GsonPhaser.class);
-
-                progress1 = progressCurrent.walking().intValue();
-                progress2 = progressCurrent.running().intValue();
-                progress3 = progressCurrent.sitting().intValue();
-                progress4 = progressCurrent.standing().intValue();
-                progress5 = progressCurrent.lying().intValue();
-
-                goal1 = progressUpdate.walking().intValue();
-                goal2 = progressUpdate.running().intValue();
-                goal3 = progressUpdate.sitting().intValue();
-                goal4 = progressUpdate.standing().intValue();
-                goal5 = progressUpdate.lying().intValue();
-
-
-                progressBar1.setProgress((progress1/goal1)*100);
-                progressBar2.setProgress((progress2/goal2)*100);
-                progressBar3.setProgress((progress3/goal3)*100);
-                progressBar4.setProgress((progress4/goal4)*100);
-                progressBar5.setProgress((progress5/goal5)*100);
 
 
 //
@@ -150,5 +161,44 @@ public class ProgressActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    public void update() {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/activity/progress";
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
+                url,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        JSONObject goal = null;
+                        JSONObject  progress = null;
+                        try {
+                             goal = response.getJSONObject("goal");
+                             progress = response.getJSONObject("progress");
+                            //  YOUR RESPONSE
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            updateUI(goal.toString(), progress.toString());
+                        }
+                        catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+
+            }
+        });
+        queue.add(jsonObjReq);
+    }
+
+
 
 }

@@ -33,5 +33,6 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
     testCompile 'junit:junit:4.12'
     compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.googlecode.json-simple:json-simple:1.1'
     implementation files('libs/gson-2.8.2.jar')
 }
