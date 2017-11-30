@@ -352,6 +352,8 @@ public class GoalsActivity extends Activity implements OnClickListener {
             goalMap.put("standing",standingTime);
             goalMap.put("lyingDown",lyingDownTime);
 
+
+
             /** json goaltime saved as string*/
             JSONObject goalJson = new JSONObject(goalMap);
             String user = new String("admin");
