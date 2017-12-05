@@ -15,11 +15,13 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -146,38 +148,38 @@ public class ProgressActivity extends AppCompatActivity {
 
     public void update() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/activity/progress";
-        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
+        String url ="http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/activity/progress?user=admin";
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
                 url,
-                new Response.Listener<JSONObject>() {
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        JSONObject goal = null;
-                        JSONObject  progress = null;
-                        try {
-                             goal = response.getJSONObject("goal");
-                             progress = response.getJSONObject("progress");
-                            //  YOUR RESPONSE
-                        }
-                        catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        try {
+                    public void onResponse(JSONArray response) {
+                        // Do something with response
+                        //mTextView.setText(response.toString());
+
+                        // Process the JSON
+                        try{
+                            // Loop through the array elements
+                            JSONObject goal = response.getJSONObject(0);
+                            JSONObject progress = response.getJSONObject(1);
                             updateUI(goal.toString(), progress.toString());
-                        }
-                        catch (Exception e) {
+
+                        }catch (Exception e){
                             e.printStackTrace();
                         }
-
                     }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
+                },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error){
+                        // Do something when error occurred
+                        Log.i("error msg", "error getting jsonArray");
+                    }
+                }
+        );
 
-            }
-        });
-        queue.add(jsonObjReq);
+        queue.add(jsonArrayRequest);
     }
 
 
