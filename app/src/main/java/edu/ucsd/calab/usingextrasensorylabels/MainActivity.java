@@ -80,11 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
-        //https://www.cozycal.com/
-
+        
         final Button button1 = (Button) findViewById(R.id.goalButton);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
