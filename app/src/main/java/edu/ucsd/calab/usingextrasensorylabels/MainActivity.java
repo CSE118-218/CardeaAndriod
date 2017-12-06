@@ -65,8 +65,13 @@ public class MainActivity extends AppCompatActivity {
         motorSkillsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.rstgames.balloons&hl=en"));
-                startActivity(browserIntent);
+                Intent launchItent = getPackageManager().getLaunchIntentForPackage("com.rstgames.balloons");
+                if(launchItent != null){
+                    startActivity(launchItent);
+                } else {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.rstgames.balloons&hl=en"));
+                    startActivity(browserIntent);
+                }
             }
         });
 
