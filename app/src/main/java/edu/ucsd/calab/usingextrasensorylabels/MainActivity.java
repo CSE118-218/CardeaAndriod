@@ -51,8 +51,14 @@ public class MainActivity extends AppCompatActivity {
         cognitiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.lumosity.com"));
-                startActivity(browserIntent);
+
+                Intent launchItent = getPackageManager().getLaunchIntentForPackage("com.lumoslabs.lumosity");
+                if(launchItent != null){
+                    startActivity(launchItent);
+                } else {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.lumoslabs.lumosity&hl=en"));
+                    startActivity(browserIntent);
+                }
             }
         });
         lifeStyleButton.setOnClickListener(new View.OnClickListener() {
