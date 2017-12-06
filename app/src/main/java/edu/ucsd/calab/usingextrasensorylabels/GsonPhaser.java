@@ -6,11 +6,11 @@ package edu.ucsd.calab.usingextrasensorylabels;
 
 public class GsonPhaser {
 
-    private Double walking;
-    private Double running;
-    private Double sitting;
-    private Double standing;
-    private Double lying;
+    public Double walking;
+    public Double running;
+    public Double sitting;
+    public Double standing;
+    public Double lying;
     // standard getters & setters...
 
     public GsonPhaser(Double walking, Double running, Double sitting, Double standing, Double lying){
