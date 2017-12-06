@@ -64,10 +64,17 @@ public class MainActivity extends AppCompatActivity {
         lifeStyleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.cozycal.com/"));
-                startActivity(browserIntent);
+                Intent launchItent = getPackageManager().getLaunchIntentForPackage("com.medisafe.android.client");
+                if(launchItent != null){
+                    startActivity(launchItent);
+                } else {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.medisafe.android.client&hl=en"));
+                    startActivity(browserIntent);
+                }
             }
         });
+
+
         motorSkillsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        
+
         final Button button1 = (Button) findViewById(R.id.goalButton);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
