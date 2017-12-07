@@ -159,6 +159,10 @@
         android:layout_height="31dp" />
 
 
+    <include
+        layout="@layout/content_main"
+        android:layout_height="123dp" />
+
     <View
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -172,6 +176,6 @@
         android:layout_height="wrap_content"
         android:background="#1ABC9C"
         android:textColor="@android:color/white"
-        android:text="Click for Progress Demo" />
+        android:text="Update Progress" />
 </LinearLayout>
 </ScrollView>
