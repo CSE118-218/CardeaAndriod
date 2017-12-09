@@ -1,6 +1,7 @@
 package edu.ucsd.calab.usingextrasensorylabels;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -62,6 +63,7 @@ public class ProgressActivity extends AppCompatActivity {
     private ProgressBar progressBar5;
 
     private Button button;
+
 
     private int prog1 = 5;
     private int prog2 = 5;
@@ -150,64 +152,77 @@ public class ProgressActivity extends AppCompatActivity {
             }
         });
 
+        // button for radar_chart
 
-//        Chart for weekly progress comparision
-        RadarChart chart = (RadarChart) findViewById(R.id.chart);
+        final Button radarButton = (Button) findViewById(R.id.radarchartButton);
+        radarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProgressActivity.this, RadarChartActivity.class);
+                startActivity(i);
 
-        ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(4f, 0));
-        entries.add(new Entry(5f, 1));
-        entries.add(new Entry(2f, 2));
-        entries.add(new Entry(7f, 3));
-        entries.add(new Entry(6f, 4));
-        entries.add(new Entry(5f, 5));
-
-        ArrayList<Entry> entries2 = new ArrayList<>();
-        entries2.add(new Entry(1f, 0));
-        entries2.add(new Entry(5f, 1));
-        entries2.add(new Entry(6f, 2));
-        entries2.add(new Entry(3f, 3));
-        entries2.add(new Entry(4f, 4));
-        entries2.add(new Entry(8f, 5));
-
-        RadarDataSet dataset_comp1 = new RadarDataSet(entries, "Company1");
-
-        RadarDataSet dataset_comp2 = new RadarDataSet(entries2, "Company2");
-
-        dataset_comp1.setColor(Color.CYAN);
-        dataset_comp1.setDrawFilled(true);
-
-        dataset_comp2.setColor(Color.RED);
-        dataset_comp2.setDrawFilled(true);
-
-
-        ArrayList<RadarDataSet> dataSets = new ArrayList<RadarDataSet>();
-        dataSets.add(dataset_comp1);
-        dataSets.add(dataset_comp2);
-
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("Communication");
-        labels.add("Technical Knowledge");
-        labels.add("Team Player");
-        labels.add("Meeting Deadlines");
-        labels.add("Problem Solving");
-        labels.add("Punctuality");
-
-
-
-
-        RadarData data = new RadarData(labels, dataSets);
-        chart.setData(data);
-        String description = "Employee-Skill Analysis (scale of 1-10), 10 being the highest";
-        chart.setDescription(description);
-        chart.setWebLineWidthInner(0.5f);
-        chart.setDescriptionColor(Color.RED);
-
-        //chart.setSkipWebLineCount(10);
-        chart.invalidate();
-        chart.animate();
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+            }
+        });
+////        Chart for weekly progress comparision
+//        RadarChart chart = (RadarChart) findViewById(R.id.chart);
+//
+//        ArrayList<Entry> entries = new ArrayList<>();
+//        entries.add(new Entry(0f, 0));
+//        entries.add(new Entry(0f, 1));
+//        entries.add(new Entry(0f, 2));
+//        entries.add(new Entry(0f, 3));
+//        entries.add(new Entry(0f, 4));
+////        entries.add(new Entry(5f, 5));
+//
+//        ArrayList<Entry> entries2 = new ArrayList<>();
+//        entries2.add(new Entry(0f, 0));
+//        entries2.add(new Entry(0f, 1));
+//        entries2.add(new Entry(0f, 2));
+//        entries2.add(new Entry(0f, 3));
+//        entries2.add(new Entry(0f, 4));
+////        entries2.add(new Entry(8f, 5));
+//
+//        RadarDataSet dataset_comp1 = new RadarDataSet(entries, "PastWeek");
+//
+//        RadarDataSet dataset_comp2 = new RadarDataSet(entries2, "ThisWeek");
+//
+//        dataset_comp1.setColor(Color.CYAN);
+//        dataset_comp1.setDrawFilled(true);
+//
+//        dataset_comp2.setColor(Color.RED);
+//        dataset_comp2.setDrawFilled(true);
+//
+//
+//        ArrayList<RadarDataSet> dataSets = new ArrayList<RadarDataSet>();
+//        dataSets.add(dataset_comp1);
+//        dataSets.add(dataset_comp2);
+//
+//        ArrayList<String> labels = new ArrayList<String>();
+//        labels.add("Walking");
+//        labels.add("Running");
+//        labels.add("Sitting");
+//        labels.add("Standing");
+//        labels.add("Lying Down");
+////        labels.add("Punctuality");
+//
+//
+//
+//
+//        RadarData data = new RadarData(labels, dataSets);
+//        chart.setData(data);
+//        String description = "Weekly Activity Analysis (scale of 1-10), 10 being the highest";
+//        chart.setDescription(description);
+//        chart.setWebLineWidthInner(0.5f);
+//        chart.setDescriptionColor(Color.RED);
+//
+//        //chart.setSkipWebLineCount(10);
+////        dataSet.addEntry(...);
+////        exampleData.notifyDataChanged(); // let the data know a dataSet changed
+////        chart.notifyDataSetChanged(); // let the chart know it's data changed
+//        chart.invalidate();
+//        chart.animate();
+////        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+////        setSupportActionBar(toolbar);
     }
 
 
