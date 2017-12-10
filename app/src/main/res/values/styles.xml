@@ -74,5 +74,10 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <!-- Dark Buttons -->
+    <style name="ThemeOverlay.MyDarkButton" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorButtonNormal">#607D8B</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
 </resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "10534890960",
+    "project_id": "cardea-87e2b"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10534890960:android:79de89cac3df1808",
+        "android_client_info": {
+          "package_name": "edu.ucsd.calab.cardea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10534890960-1tbvkqb3uo2lcql71bj91aoj3btl7mh0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.ucsd.calab.cardea",
+            "certificate_hash": "ba0e8e5973c0baf93dc908274af067482cc23318"
+          }
+        },
+        {
+          "client_id": "10534890960-2ihdierppqbliddg4t89hir69qd2n1hk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuvk2S0-Xe36tcP3TimuimBCZnnBy2Qmw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

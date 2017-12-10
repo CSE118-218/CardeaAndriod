@@ -229,7 +229,7 @@
             android:id="@+id/button1"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="79dp"
             android:background="#1ABC9C"
             android:text="Update Goal"
             android:textColor="@android:color/white" />

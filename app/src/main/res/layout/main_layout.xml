@@ -25,6 +25,13 @@
                 android:textColor="@android:color/white"
                 android:textSize="14pt" />
 
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:text="Log Out" />
+
         </FrameLayout>
 
         <TextView

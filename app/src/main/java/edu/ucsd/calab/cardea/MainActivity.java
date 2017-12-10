@@ -6,10 +6,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 /**
  * Created by zht on 11/17/17.
@@ -21,17 +36,23 @@ public class MainActivity extends AppCompatActivity {
     private TextView test;
     private int mInterval = 1000; // 5 seconds by default, can be changed later
     private Handler mHandler;
-
+    private static final int RC_SIGN_IN = 9001;
+    private TextView mStatusTextView;
+    private LoginActivity mActivity;
+    private Button mLogoutButton;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.main_layout);
 
+
 //        set text for animated recommender text
 //        test = (TextView)findViewById(R.id.recommender);
         // animate the stroke tips in the goal page
   // Set focus to the textview
+        // Views
 
         mHandler = new Handler();
         startRepeatingTask();
@@ -42,7 +63,15 @@ public class MainActivity extends AppCompatActivity {
         final Button motorSkillsButton = (Button) findViewById(R.id.motorSkillsButton);
         final Button lifeStyleButton = (Button) findViewById(R.id.lifeStyleButton);
 
+        mLogoutButton = (Button) findViewById(R.id.logout_button);
+        mLogoutButton.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                signOut();
+            }
+
+        });
 
         cognitiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +164,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
+    // [START signOut]
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // [START_EXCLUDE]
+                        updateUI(null);
+                        // [END_EXCLUDE]
+                    }
+                });
+    }
+    // [END signOut]
+    // [START revokeAccess]
+    private void revokeAccess() {
+        mGoogleSignInClient.revokeAccess()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // [START_EXCLUDE]
+                        Intent loginActivityIntent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(loginActivityIntent);
+                        // [END_EXCLUDE]
+                    }
+                });
+    }
+    // [END revokeAccess]
 
     @Override
     public void onDestroy() {
@@ -179,4 +234,13 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    private void updateUI(@Nullable GoogleSignInAccount account) {
+
+        Intent loginActivityIntent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(loginActivityIntent);
+        mActivity.signOut();
+
+    }
+
 }
