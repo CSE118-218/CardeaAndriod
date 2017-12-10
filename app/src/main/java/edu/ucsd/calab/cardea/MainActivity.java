@@ -1,4 +1,4 @@
-package edu.ucsd.calab.usingextrasensorylabels;
+package edu.ucsd.calab.cardea;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,12 +8,8 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by zht on 11/17/17.
@@ -179,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
             test.setText("Walk to 64 Degree to eat?");
         } else if((result <= 15) && (result > 1)) {
             test.setText("Want a cup coffee from Price Center? ");
-        } else { test.setText("No goal has been setted");
+        } else { test.setText("No goal currently active.");
 
         }
     }

@@ -1,235 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#303F9F"
-        android:paddingBottom="18dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingTop="18dp">
+        android:focusableInTouchMode="false"
+        android:orientation="vertical"
+        android:windowSoftInputMode="stateHidden">
 
-
-        <TextView
-            android:id="@+id/text_view_id"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/goals"
-            android:textColor="@android:color/white"
-            android:textSize="14pt" />
+            android:background="#156eb1"
+            android:focusableInTouchMode="false"
+            android:paddingBottom="18dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:paddingTop="18dp"
+            android:windowSoftInputMode="stateHidden">
 
-    </FrameLayout>
 
-    <!--No time for fragment
+            <TextView
+                android:id="@+id/text_view_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/goals"
+                android:textColor="@android:color/white"
+                android:textSize="13pt" />
+
+        </FrameLayout>
+
+        <!--No time for fragment
     <RelativeLayout
         android:id="@+id/add_goal_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginTop="20dp" />
 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="231dp"
-            android:layout_height="wrap_content"
-            android:text="   Walking   "
-            android:textSize="12pt" />
-
-        <EditText
-            android:id="@+id/editText1"
-            android:layout_width="67dp"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="12pt">
-
-            <requestFocus />
-        </EditText>
-
-        <TextView
-            android:id="@+id/unit2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="min"
-            android:textColor="@color/abc_input_method_navigation_guard"
-            android:textSize="12pt" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="   Walking   "
+                android:textSize="11pt" />
 
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="232dp"
-            android:layout_height="wrap_content"
-            android:text="   Running   "
-            android:textSize="12pt" />
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="67dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="11pt">
 
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="67dp"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="12pt">
+            </EditText>
 
+            <TextView
+                android:id="@+id/unit2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:text="min"
+                android:textColor="@color/abc_input_method_navigation_guard" />
+        </LinearLayout>
 
-        </EditText>
-
-        <TextView
-            android:id="@+id/unit3"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="min"
-            android:textColor="@color/abc_input_method_navigation_guard"
-            android:textSize="12pt" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="   Running   "
+                android:textSize="11pt" />
 
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="232dp"
-            android:layout_height="wrap_content"
-            android:text="   Sitting   "
-            android:textSize="12pt" />
-
-        <EditText
-            android:id="@+id/editText3"
-            android:layout_width="67dp"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="12pt">
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="67dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="11pt">
 
 
-        </EditText>
+            </EditText>
 
-        <TextView
-            android:id="@+id/unit4"
+            <TextView
+                android:id="@+id/unit3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:text="min"
+                android:textColor="@color/abc_input_method_navigation_guard" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="min"
-            android:textColor="@color/abc_input_method_navigation_guard"
-            android:textSize="12pt" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="   Sitting   "
+                android:textSize="11pt" />
 
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="232dp"
-            android:layout_height="wrap_content"
-            android:text="   Standing   "
-            android:textSize="12pt" />
-
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="67dp"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="12pt">
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="67dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="11pt">
 
 
-        </EditText>
+            </EditText>
 
-        <TextView
-            android:id="@+id/unit5"
+            <TextView
+                android:id="@+id/unit4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:text="min"
+                android:textColor="@color/abc_input_method_navigation_guard" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="min"
-            android:textColor="@color/abc_input_method_navigation_guard"
-            android:textSize="12pt" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="   Standing   "
+                android:textSize="11pt" />
 
-        <CheckBox
-            android:id="@+id/checkBox5"
-            android:layout_width="232dp"
-            android:layout_height="wrap_content"
-            android:text="   Lying Down   "
-            android:textSize="12pt" />
-
-        <EditText
-            android:id="@+id/editText5"
-            android:layout_width="67dp"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="12pt">
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="67dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="11pt">
 
 
-        </EditText>
+            </EditText>
 
-        <TextView
-            android:id="@+id/unit1"
+            <TextView
+                android:id="@+id/unit5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:text="min"
+                android:textColor="@color/abc_input_method_navigation_guard" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="min"
-            android:textColor="@color/abc_input_method_navigation_guard"
-            android:textSize="12pt" />
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:text="   Lying Down   "
+                android:textSize="11pt" />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="67dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="11pt">
+
+
+            </EditText>
+
+            <TextView
+                android:id="@+id/unit1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:text="min"
+                android:textColor="@color/abc_input_method_navigation_guard" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/health_tips"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/loginBackground"
+            android:text="Click here for goals and diet suggestions!"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/stroke_animated_tips"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            android:background="#3498DB"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Remember to keep at your goal! Some tips: Get moving! Eat a balanced diet!"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="#3498DB" />
+
+        <Button
+            android:id="@+id/button1"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1ABC9C"
+            android:text="Update Goal"
+            android:textColor="@android:color/white" />
+
     </LinearLayout>
-
-    <Button
-        android:id="@+id/stroke_call"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/loginBackground"
-        android:text="Click Here Call National Stroke Association For Stroke Recover Exercise Suggestions"
-        android:textColor="@android:color/white"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/stroke_animated_tips"
-        android:layout_width="match_parent"
-        android:layout_height="73dp"
-        android:gravity="center"
-        android:background="#3498DB"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="true"
-        android:singleLine="true"
-        android:text="According to CDC, Stroke is Preventable!  Do the following: Check your blood pressure  Stop smoking  Get moving  Eat healthfully  Lose weight  "
-        android:textColor="@android:color/white"
-        android:textSize="20dp" />
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_weight="1"
-        android:background="#3498DB" />
-
-    <Button
-        android:id="@+id/button1"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#1ABC9C"
-        android:textColor="@android:color/white"
-        android:text="Update Goal" />
-
-</LinearLayout>
 </ScrollView>

@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#303F9F"
+        android:background="#156eb1"
         android:paddingBottom="18dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"

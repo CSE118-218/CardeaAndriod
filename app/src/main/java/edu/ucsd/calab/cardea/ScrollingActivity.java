@@ -1,19 +1,13 @@
-package edu.ucsd.calab.usingextrasensorylabels;
+package edu.ucsd.calab.cardea;
 
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -23,41 +17,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import android.os.Vibrator;
+
 public class ScrollingActivity extends AppCompatActivity {
 
     private static final int TOP_N_PROBABLE_LABELS = 1;
@@ -250,7 +235,7 @@ public class ScrollingActivity extends AppCompatActivity {
 
             double[] latLong = parseLocationLatitudeLongitude(fileContent);
 
-            String latlongstr = "(" + latLong.length + "): <" + latLong[0] + ", " + latLong[1] + ">";
+            //String latlongstr = "(" + latLong.length + "): <" + latLong[0] + ", " + latLong[1] + ">";
             String pairsStr = labelsAndProbs.size() + " labels:\n";
             for (Pair pair : labelsAndProbs) {
                 pairsStr += pair.first + ": " + pair.second + "\n";
@@ -258,7 +243,7 @@ public class ScrollingActivity extends AppCompatActivity {
 
             textToPresent =
                     "Timestamp: " + _timestamp + "\n\n" +
-                            "Location lat long: " + latlongstr + "\n" + "----------------\n" +
+                            "Location lat long: " + /*latlongstr +*/ "\n" + "----------------\n" +
                             "Server predictions:\n" + pairsStr + "\n" + "-------------\n";
 
         }

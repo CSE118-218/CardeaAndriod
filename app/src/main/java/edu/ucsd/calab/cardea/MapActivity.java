@@ -1,4 +1,4 @@
-package edu.ucsd.calab.usingextrasensorylabels;
+package edu.ucsd.calab.cardea;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 /**
  * Created by Alex on 11/26/17.

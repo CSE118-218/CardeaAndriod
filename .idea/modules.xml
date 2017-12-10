@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Cardea.iml" filepath="$PROJECT_DIR$/Cardea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CardeaAndriod.iml" filepath="$PROJECT_DIR$/CardeaAndriod.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

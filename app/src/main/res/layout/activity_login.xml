@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/heartlogo" />
+        android:src="@drawable/cardea_logo" />
 
     <EditText
         android:id="@+id/editText2"
