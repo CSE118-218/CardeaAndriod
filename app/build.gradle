@@ -41,6 +41,7 @@ dependencies {
 
     // Dependency for Google Sign-In
     compile 'com.google.android.gms:play-services-auth:11.6.0'
+    compile 'com.google.android.gms:play-services-maps:11.6.0'
 
 
 }

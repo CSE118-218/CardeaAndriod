@@ -237,9 +237,9 @@ public class MainActivity extends AppCompatActivity {
         String walkingtime = sharedPreferences.getString("Walking", "0");
         int result = Integer.parseInt(walkingtime);
         if (result >= 15) {
-            test.setText("Walk to 64 Degree to eat?");
+            test.setText("Ready for a walk?");
         } else if((result <= 15) && (result > 1)) {
-            test.setText("Want a cup coffee from Price Center? ");
+            test.setText("Coffee break?");
         } else { test.setText("No goal currently active.");
 
         }

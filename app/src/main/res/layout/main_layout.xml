@@ -47,8 +47,10 @@
             android:gravity="center"
             android:singleLine="true"
             android:textColor="@android:color/white"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
             android:textSize="10pt" />
-
 
         <!--<View
             android:layout_width="0dp"

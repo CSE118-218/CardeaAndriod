@@ -45,6 +45,10 @@
         <activity android:name="edu.ucsd.calab.cardea.MainActivity" />
         <activity android:name="edu.ucsd.calab.cardea.MapActivity" />
         <activity android:name="edu.ucsd.calab.cardea.RadarChartActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAdp722RU7zxPHGRiCT4J-66dybhsO0MVQ"/>
     </application>
 
 </manifest>
