@@ -213,7 +213,7 @@ public class ProgressActivity extends AppCompatActivity {
 
     public void update() {
         //ScrollingActivity sc = new ScrollingActivity();
-        Log.i("userID:   ", MainActivity.user);
+        //Log.i("userID:   ", MainActivity.user);
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/activity/progress?user=admin";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(

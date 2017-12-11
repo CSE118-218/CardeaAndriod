@@ -27,7 +27,7 @@ import static java.lang.Math.log;
 
 public class serverConnection extends BroadcastReceiver {
 
-    public static final String ESA_BROADCAST_SAVED_PRED_FILE = "edu.ucsd.calab.cardea.broadcast.saved_prediction_file";
+    public static final String ESA_BROADCAST_SAVED_PRED_FILE = "edu.ucsd.calab.extrasensory.broadcast.saved_prediction_file";
     public static final String ESA_BROADCAST_EXTRA_KEY_TIMESTAMP = "timestamp";
     @Override
     public void onReceive(Context context, Intent intent) {

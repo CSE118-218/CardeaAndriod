@@ -156,7 +156,7 @@
     <WebView
         android:id="@+id/strock_tips"
         android:layout_width="match_parent"
-        android:layout_height="135dp" />
+        android:layout_height="140dp" />
 
 
 
