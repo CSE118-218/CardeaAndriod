@@ -1,12 +1,16 @@
 package edu.ucsd.calab.usingextrasensorylabels;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,6 +18,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 /**
  * Created by zht on 11/17/17.
@@ -25,12 +36,15 @@ public class MainActivity extends AppCompatActivity {
     private TextView test;
     private int mInterval = 1000; // 5 seconds by default, can be changed later
     private Handler mHandler;
-
-
+    public static String user;
+    public static File userFileDir;
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.main_layout);
+        List<String> users = getUsers();
+        user = users.get(0);
+
 
 //        set text for animated recommender text
 //        test = (TextView)findViewById(R.id.recommender);
@@ -169,4 +183,52 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+    public List<String> getUsers() {
+        try {
+            File esaFilesDir = getUsersFilesDirectory();
+            userFileDir = esaFilesDir;
+            if (esaFilesDir == null) {
+                return null;
+            }
+            String[] filenames = esaFilesDir.list(new FilenameFilter() {
+                @Override
+                public boolean accept(File file, String s) {
+                    return s.startsWith(UUID_DIR_PREFIX);
+                }
+            });
+
+            SortedSet<String> usersSet = new TreeSet<>();
+            for (String filename : filenames) {
+                String uuidPrefix = filename.replace(UUID_DIR_PREFIX,"");
+                usersSet.add(uuidPrefix);
+            }
+
+            List<String> uuidPrefixes = new ArrayList<>(usersSet);
+            return uuidPrefixes;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public File getUsersFilesDirectory() throws PackageManager.NameNotFoundException {
+        // Locate the ESA saved files directory, and the specific minute-example's file:
+        Context extraSensoryAppContext = getApplicationContext().createPackageContext("edu.ucsd.calab.extrasensory",0);
+        File esaFilesDir = extraSensoryAppContext.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+        if (!esaFilesDir.exists()) {
+            return null;
+        }
+        return esaFilesDir;
+    }
+
+    private static final String SERVER_PREDICTIONS_FILE_SUFFIX = ".server_predictions.json";
+    private static final String USER_REPORTED_LABELS_FILE_SUFFIX = ".user_reported_labels.json";
+    private static final String UUID_DIR_PREFIX = "extrasensory.labels.";
+
+
+
+
+
+
 }

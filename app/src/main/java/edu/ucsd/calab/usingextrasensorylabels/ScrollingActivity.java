@@ -124,11 +124,13 @@ public class ScrollingActivity extends AppCompatActivity {
 
     private String _uuidPrefix = null;
     private String _timestamp = null;
-    private static final String NO_USER = "no user";
+    public static final String NO_USER = "no user";
     private static final String NO_TIMESTAMP = "no timestamp";
 
+
+
     private boolean fillUserSelector() {
-        pushToServer();
+        //pushToServer();
         boolean haveUsers = true;
         List<String> uuidPrefixes = getUsers();
         // first check if there are any users at all:
@@ -314,7 +316,15 @@ public class ScrollingActivity extends AppCompatActivity {
         }
         return esaFilesDir;
     }
-
+    public String getUser() {
+        List<String> users = getUsers();
+        if(users != null) {
+            return users.get(0);
+        }
+        else {
+            return null;
+        }
+    }
     /**
      * Get the list of users (UUID prefixes).
      * @return List of UUID prefixes (strings).

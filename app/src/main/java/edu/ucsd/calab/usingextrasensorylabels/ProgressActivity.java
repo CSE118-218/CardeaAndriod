@@ -66,33 +66,34 @@ public class ProgressActivity extends AppCompatActivity {
     private WebView strockTips;
 
     public void updateUI(String g, String p) throws ParseException, JSONException{
-
+        Log.i("goal json", g);
+        Log.i("progress json", p);
 
         // get current and goal json from sever
         // new gson object
-        JSONParser parser = new JSONParser();
-        JSONObject goal = (JSONObject) parser.parse(g);
-        JSONObject progress = (JSONObject) parser.parse(p);
+        //JSONParser parser = new JSONParser();
+        JSONObject goal = new JSONObject(g);
+        JSONObject progress = new JSONObject(p);
         //      phase current json to java objects
 
-        progress1 = goal.getDouble("walking");
-        progress2 = goal.getDouble("running");
-        progress3 = goal.getDouble("sitting");
-        progress4 = goal.getDouble("standing");
-        progress5 = goal.getDouble("lyingDown");
+        progress1 = progress.getDouble("walking");
+        progress2 = progress.getDouble("running");
+        progress3 = progress.getDouble("sitting");
+        progress4 = progress.getDouble("standing");
+        progress5 = progress.getDouble("lyingDown");
 
-        goal1 = progress.getDouble("walking");
-        goal2 = progress.getDouble("running");
-        goal3 = progress.getDouble("sitting");
-        goal4 = progress.getDouble("standing");
-        goal5 = progress.getDouble("lyingDown");
+        goal1 = goal.getDouble("walking");
+        goal2 = goal.getDouble("running");
+        goal3 = goal.getDouble("sitting");
+        goal4 = goal.getDouble("standing");
+        goal5 = goal.getDouble("lyingDown");
 
 
-        progressBar1.setProgress((int)(progress1/goal1)*100);
-        progressBar2.setProgress((int)(progress2/goal2)*100);
-        progressBar3.setProgress((int)(progress3/goal3)*100);
-        progressBar4.setProgress((int)(progress4/goal4)*100);
-        progressBar5.setProgress((int)(progress5/goal5)*100);
+        progressBar1.setProgress((int)((progress1/goal1)*100));
+        progressBar2.setProgress((int)((progress2/goal2)*100));
+        progressBar3.setProgress((int)((progress3/goal3)*100));
+        progressBar4.setProgress((int)((progress4/goal4)*100));
+        progressBar5.setProgress((int)((progress5/goal5)*100));
 
     }
 
@@ -147,6 +148,8 @@ public class ProgressActivity extends AppCompatActivity {
 
 
     public void update() {
+        //ScrollingActivity sc = new ScrollingActivity();
+        Log.i("userID:   ",MainActivity.user);
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/activity/progress?user=admin";
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
