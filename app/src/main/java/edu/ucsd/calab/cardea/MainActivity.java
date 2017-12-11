@@ -6,11 +6,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.annotation.BinderThread;
 import android.support.annotation.Nullable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
@@ -25,9 +29,9 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.common.api.GoogleApiClient;
-
 /**
  * Created by zht on 11/17/17.
+ * Updated by Prakriti Gupta.
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -47,17 +51,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(bundle);
         setContentView(R.layout.main_layout);
 
-
-//        set text for animated recommender text
-//        test = (TextView)findViewById(R.id.recommender);
-        // animate the stroke tips in the goal page
-  // Set focus to the textview
-        // Views
-
         mHandler = new Handler();
         startRepeatingTask();
         //        read message
 
+        // [START configure_signin]
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        // [END configure_signin]
+
+        // [START build_client]
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        // [END build_client]
+        mStatusTextView = (TextView) findViewById(R.id.text_view_id);
 
         final Button cognitiveButton = (Button) findViewById(R.id.cognitiveButton);
         final Button motorSkillsButton = (Button) findViewById(R.id.motorSkillsButton);
@@ -239,8 +249,20 @@ public class MainActivity extends AppCompatActivity {
 
         Intent loginActivityIntent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(loginActivityIntent);
-        mActivity.signOut();
+        //mActivity.signOut();
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // [START on_start_sign_in]
+        // Check for existing Google Sign In account, if the user is already signed in
+        // the GoogleSignInAccount will be non-null.
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
+        // [END on_start_sign_in]
     }
 
 }
