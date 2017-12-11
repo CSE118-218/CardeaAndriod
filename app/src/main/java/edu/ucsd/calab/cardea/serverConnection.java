@@ -8,7 +8,6 @@ import android.os.Environment;
 import android.os.Vibrator;
 import android.util.Log;
 
-<<<<<<< HEAD:app/src/main/java/edu/ucsd/calab/usingextrasensorylabels/serverConnection.java
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -22,8 +21,6 @@ import java.util.TreeSet;
 
 import static java.lang.Math.log;
 
-=======
->>>>>>> 38b76479723afd52fb104e4d35e8cd8480d7e02e:app/src/main/java/edu/ucsd/calab/cardea/serverConnection.java
 /**
  * Created by youzhenghong on 17/11/2017.
  */

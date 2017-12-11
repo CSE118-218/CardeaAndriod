@@ -1,9 +1,12 @@
 package edu.ucsd.calab.cardea;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.annotation.BinderThread;
@@ -29,6 +32,14 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 /**
  * Created by zht on 11/17/17.
  * Updated by Prakriti Gupta.
@@ -45,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
     private LoginActivity mActivity;
     private Button mLogoutButton;
     private GoogleSignInClient mGoogleSignInClient;
+
+    public static String user;
+    public static File userFileDir;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -264,5 +278,49 @@ public class MainActivity extends AppCompatActivity {
         mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
         // [END on_start_sign_in]
     }
+
+    public List<String> getUsers() {
+        try {
+            File esaFilesDir = getUsersFilesDirectory();
+            userFileDir = esaFilesDir;
+            if (esaFilesDir == null) {
+                return null;
+            }
+            String[] filenames = esaFilesDir.list(new FilenameFilter() {
+                @Override
+                public boolean accept(File file, String s) {
+                    return s.startsWith(UUID_DIR_PREFIX);
+                }
+            });
+
+            SortedSet<String> usersSet = new TreeSet<>();
+            for (String filename : filenames) {
+                String uuidPrefix = filename.replace(UUID_DIR_PREFIX,"");
+                usersSet.add(uuidPrefix);
+            }
+
+            List<String> uuidPrefixes = new ArrayList<>(usersSet);
+            return uuidPrefixes;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public File getUsersFilesDirectory() throws PackageManager.NameNotFoundException {
+        // Locate the ESA saved files directory, and the specific minute-example's file:
+        Context extraSensoryAppContext = getApplicationContext().createPackageContext("edu.ucsd.calab.cardea",0);
+        File esaFilesDir = extraSensoryAppContext.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+        if (!esaFilesDir.exists()) {
+            return null;
+        }
+        return esaFilesDir;
+    }
+
+    private static final String SERVER_PREDICTIONS_FILE_SUFFIX = ".server_predictions.json";
+    private static final String USER_REPORTED_LABELS_FILE_SUFFIX = ".user_reported_labels.json";
+    private static final String UUID_DIR_PREFIX = "extrasensory.labels.";
+
+
 
 }
