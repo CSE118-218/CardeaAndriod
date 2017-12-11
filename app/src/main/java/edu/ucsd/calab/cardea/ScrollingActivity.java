@@ -466,7 +466,25 @@ public class ScrollingActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_scrolling, menu);
         return true;
     }
+        @Override
+     protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+               presentContent();
+            //pushToServer();
+           }
+         @Override
+    public void onResume() {
+             super.onResume();
+              Log.d(LOG_TAG,"registring for broadcast: " + ESA_BROADCAST_SAVED_PRED_FILE);
+               //this.registerReceiver(_broadcastReceiver,new IntentFilter(ESA_BROADCAST_SAVED_PRED_FILE));
+           }
 
+    @Override
+    public void onPause() {
+        //this.unregisterReceiver(_broadcastReceiver);
+        Log.d(LOG_TAG, "Unregistered broadcast: " + ESA_BROADCAST_SAVED_PRED_FILE);
+        super.onPause();
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
