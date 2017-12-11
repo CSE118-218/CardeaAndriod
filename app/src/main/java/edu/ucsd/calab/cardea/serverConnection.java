@@ -8,6 +8,15 @@ import android.os.Environment;
 import android.os.Vibrator;
 import android.util.Log;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -15,7 +24,9 @@ import java.io.FilenameFilter;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -35,6 +46,7 @@ public class serverConnection extends BroadcastReceiver {
         if (ESA_BROADCAST_SAVED_PRED_FILE.equals(intent.getAction())) {
             Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
             // Vibrate for 400 milliseconds
+            v.vibrate(400);
             Date currentDate = new Date();
             String newTimestamp = intent.getStringExtra(ESA_BROADCAST_EXTRA_KEY_TIMESTAMP);
             String userID = MainActivity.user;
@@ -43,12 +55,46 @@ public class serverConnection extends BroadcastReceiver {
             Log.i("newTime    ", newTimestamp);
             Log.i("user    ", userID);
             Log.i("user    ", prediction);
+            try {
+                pushToServer(prediction);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
-        pushToServer();
     }
 
-    private void pushToServer() {
-
+    private void pushToServer(final String predStr) {
+        RequestQueue queue = Volley.newRequestQueue(null);
+        String url = "http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/activity/progress/update";
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("Response", response.toString());
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String>  params = new HashMap<>();
+                params.put("pred", predStr);
+                return params;
+            }
+        };
+        queue.add(postRequest);
     }
 
     private String readESALabelsFileForMinute(String uuidPrefix,String timestamp,boolean serverOrUser) {

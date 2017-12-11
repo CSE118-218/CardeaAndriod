@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mLogoutButton;
     private GoogleSignInClient mGoogleSignInClient;
 
-    public static String user;
+    public static String user = "no user";
     public static File userFileDir;
 
     @Override
@@ -65,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(bundle);
         setContentView(R.layout.main_layout);
 
+
+        user = getUsers().get(0);
+        Log.i("user id:", user);
         mHandler = new Handler();
         startRepeatingTask();
         //        read message
@@ -283,6 +287,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             File esaFilesDir = getUsersFilesDirectory();
             userFileDir = esaFilesDir;
+            Log.i("user File dir",userFileDir.toString());
             if (esaFilesDir == null) {
                 return null;
             }
@@ -292,10 +297,10 @@ public class MainActivity extends AppCompatActivity {
                     return s.startsWith(UUID_DIR_PREFIX);
                 }
             });
-
             SortedSet<String> usersSet = new TreeSet<>();
             for (String filename : filenames) {
                 String uuidPrefix = filename.replace(UUID_DIR_PREFIX,"");
+
                 usersSet.add(uuidPrefix);
             }
 
@@ -309,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public File getUsersFilesDirectory() throws PackageManager.NameNotFoundException {
         // Locate the ESA saved files directory, and the specific minute-example's file:
-        Context extraSensoryAppContext = getApplicationContext().createPackageContext("edu.ucsd.calab.cardea",0);
+        Context extraSensoryAppContext = getApplicationContext().createPackageContext("edu.ucsd.calab.extrasensory",0);
         File esaFilesDir = extraSensoryAppContext.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
         if (!esaFilesDir.exists()) {
             return null;

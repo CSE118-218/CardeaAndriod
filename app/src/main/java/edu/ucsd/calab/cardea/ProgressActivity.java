@@ -128,6 +128,7 @@ public class ProgressActivity extends AppCompatActivity {
         progressBar5 = (ProgressBar) findViewById(R.id.progressBar5);
         progressBar5.setMax(100);
 
+        update();
 
 
         button.setOnClickListener(new View.OnClickListener() {
