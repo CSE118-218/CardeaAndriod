@@ -28,6 +28,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -36,10 +37,14 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -52,60 +57,7 @@ public class ScrollingActivity extends AppCompatActivity {
     public static final String ESA_BROADCAST_SAVED_PRED_FILE = "edu.ucsd.calab.extrasensory.broadcast.saved_prediction_file";
     public static final String ESA_BROADCAST_EXTRA_KEY_TIMESTAMP = "timestamp";
 
-    private BroadcastReceiver _broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (ESA_BROADCAST_SAVED_PRED_FILE.equals(intent.getAction())) {
-                String newTimestamp = intent.getStringExtra(ESA_BROADCAST_EXTRA_KEY_TIMESTAMP);
-                Log.d(LOG_TAG,"Caught broadcast for new timestamp: " + newTimestamp);
-                _timestamp = newTimestamp;
-                presentContent();
-                //pushToServer();
-            }
-        }
-    };
 
-    private void pushToServer() {
-        Log.i("push to server", "push");
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://ec2-54-202-77-233.us-west-2.compute.amazonaws.com:8000/poll";
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                       Log.i("response", response.toString());
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-// Add the request to the RequestQueue.
-        queue.add(stringRequest);
-
-    }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        presentContent();
-        pushToServer();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.d(LOG_TAG,"registring for broadcast: " + ESA_BROADCAST_SAVED_PRED_FILE);
-        this.registerReceiver(_broadcastReceiver,new IntentFilter(ESA_BROADCAST_SAVED_PRED_FILE));
-    }
-
-    @Override
-    public void onPause() {
-        this.unregisterReceiver(_broadcastReceiver);
-        Log.d(LOG_TAG,"Unregistered broadcast: " + ESA_BROADCAST_SAVED_PRED_FILE);
-        super.onPause();
-    }
 
     private String _uuidPrefix = null;
     private String _timestamp = null;
@@ -149,7 +101,7 @@ public class ScrollingActivity extends AppCompatActivity {
     }
 
     private boolean fillTimestampSelector() {
-        pushToServer();
+
         boolean haveTimestamps = true;
         List<String> timestamps = getTimestampsForUser(_uuidPrefix);
         // check if the user has any timestamps at all:

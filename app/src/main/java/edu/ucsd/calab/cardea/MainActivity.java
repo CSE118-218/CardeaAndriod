@@ -21,6 +21,16 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -34,8 +44,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
@@ -325,6 +339,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String SERVER_PREDICTIONS_FILE_SUFFIX = ".server_predictions.json";
     private static final String USER_REPORTED_LABELS_FILE_SUFFIX = ".user_reported_labels.json";
     private static final String UUID_DIR_PREFIX = "extrasensory.labels.";
+
 
 
 
