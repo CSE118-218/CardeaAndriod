@@ -1,12 +1,13 @@
 apply plugin: 'com.android.application'
 
+
 android {
-    compileSdkVersion 22
+    compileSdkVersion 26
     buildToolsVersion '26.0.2'
     defaultConfig {
-        applicationId "edu.ucsd.calab.usingextrasensorylabels"
+        applicationId "edu.ucsd.calab.cardea"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -22,6 +23,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+//    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     //if the library is imported in lib, no more import in dependency is needed
     //compile 'com.google.code.gson:gson:2.8.2'
     implementation 'com.android.support:support-v4:22.2.1'
@@ -35,4 +38,10 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.googlecode.json-simple:json-simple:1.1'
     implementation files('libs/gson-2.8.2.jar')
+
+    // Dependency for Google Sign-In
+    compile 'com.google.android.gms:play-services-auth:11.6.0'
+    compile 'com.google.android.gms:play-services-maps:11.6.0'
+
+
 }

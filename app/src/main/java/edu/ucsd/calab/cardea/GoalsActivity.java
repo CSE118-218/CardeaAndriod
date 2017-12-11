@@ -1,23 +1,16 @@
-package edu.ucsd.calab.usingextrasensorylabels;
+package edu.ucsd.calab.cardea;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,7 +21,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
@@ -63,18 +55,11 @@ public class GoalsActivity extends Activity implements OnClickListener {
 
         Button button;
 
-
-
-
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.goals_page);
 
-
-            // animate the stroke tips in the goal page
-            TextView tv = (TextView) this.findViewById(R.id.stroke_animated_tips);
-            tv.setSelected(true);  // Set focus to the textview
 
             checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
             editText1 = (EditText) findViewById(R.id.editText1);
@@ -94,13 +79,15 @@ public class GoalsActivity extends Activity implements OnClickListener {
             button = (Button) findViewById(R.id.button1);
             button.setOnClickListener(this);
 
+            // animate the stroke tips in the goal page
+            TextView tv = (TextView) this.findViewById(R.id.stroke_animated_tips);
+            tv.setSelected(true);  // Set focus to the textview
 
-
-            final Button callButton = (Button) findViewById(R.id.stroke_call);
+            final Button callButton = (Button) findViewById(R.id.health_tips);
             callButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialContactPhone("18007876537");
+                    healthWebsite();
 
 
                 }
@@ -116,8 +103,9 @@ public class GoalsActivity extends Activity implements OnClickListener {
 
 
 
-        private void dialContactPhone(final String phoneNumber) {
-            startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)));
+        private void healthWebsite() {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.heart.org/HEARTORG/HealthyLiving/How-to-Help-Prevent-Heart-Disease---At-Any-Age_UCM_442925_Article.jsp#"));
+            startActivity(browserIntent);
         }
 
 

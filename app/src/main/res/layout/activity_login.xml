@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/heartlogo" />
+        android:src="@drawable/cardea_logo" />
 
     <EditText
         android:id="@+id/editText2"
@@ -77,23 +77,19 @@
         android:text=""
         android:textSize="25dp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_toEndOf="@+id/textview"
-        android:layout_toRightOf="@+id/textview"
-        android:text="New Text"
-        android:textSize="25dp" />
-
     <View
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_weight="1" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="24dp" />
 
     <Button
         android:id="@+id/button"
@@ -102,7 +98,7 @@
         android:layout_above="@+id/button2"
         android:layout_toEndOf="@+id/textView2"
         android:layout_toRightOf="@+id/textView2"
-        android:background="#3498DB"
+        android:background="#1ABC9C"
         android:text="login"
         android:textColor="@android:color/white" />
 
@@ -118,7 +114,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="#1ABC9C"
+        android:background="#6f5e97"
         android:text="Cancel"
         android:textColor="@android:color/white" />
 

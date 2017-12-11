@@ -1,7 +1,5 @@
-package edu.ucsd.calab.usingextrasensorylabels;
+package edu.ucsd.calab.cardea;
 
-import android.content.Context;
-import android.net.Uri;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;

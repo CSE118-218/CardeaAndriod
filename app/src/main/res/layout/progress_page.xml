@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<ScrollView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android">-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -6,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#303F9F"
+        android:background="#156eb1"
         android:paddingBottom="18dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
@@ -152,14 +156,18 @@
     <WebView
         android:id="@+id/strock_tips"
         android:layout_width="match_parent"
-        android:layout_height="226dp" />
+        android:layout_height="182dp" />
 
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1" />
 
+    <Button
+        android:id="@+id/radarchartButton"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3498DB"
+        android:textColor="@android:color/white"
+        android:text="Weekly Progress" />
 
     <Button
         android:id="@+id/progressButton"
@@ -168,5 +176,6 @@
         android:layout_height="wrap_content"
         android:background="#1ABC9C"
         android:textColor="@android:color/white"
-        android:text="Click for Progress Demo" />
+        android:text="Update Progress" />
 </LinearLayout>
+<!--</ScrollView>-->

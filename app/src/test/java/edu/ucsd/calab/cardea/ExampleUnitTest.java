@@ -1,4 +1,4 @@
-package edu.ucsd.calab.usingextrasensorylabels;
+package edu.ucsd.calab.cardea;
 
 import org.junit.Test;
 

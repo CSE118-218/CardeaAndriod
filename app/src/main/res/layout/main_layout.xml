@@ -1,163 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#303F9F"
-        android:paddingBottom="18dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingTop="18dp">
+<ScrollView xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-        <TextView
-            android:id="@+id/text_view_id"
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hello Traveler"
+            android:background="#156eb1"
+            android:paddingBottom="18dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:paddingTop="18dp">
+
+
+            <TextView
+                android:id="@+id/text_view_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hello"
+                android:textColor="@android:color/white"
+                android:layout_weight="1"
+                android:textSize="12pt" />
+
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="220dp"
+                android:layout_weight="1"
+                android:text="Log Out" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/recommender"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:autoText="false"
+            android:background="#156eb1"
+            android:gravity="center"
+            android:singleLine="true"
             android:textColor="@android:color/white"
-            android:textSize="14pt" />
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:textSize="10pt" />
 
-    </FrameLayout>
+        <!--<View
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/recommender"
-        android:layout_width="match_parent"
-        android:layout_height="47dp"
-        android:background="#303F9F"
-        android:gravity="center"
-        android:singleLine="true"
-        android:textColor="@android:color/white"
-        android:textSize="10pt" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1" />
+
+       <View
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#1ABC9C"
+                android:weightSum="1">
+
+                <Button
+                    android:id="@+id/goalButton"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="0.5"
+                    android:background="#1ABC9C"
+                    android:text="Goals"
+                    android:textColor="@android:color/white"
+                    android:textSize="15dp" />
+                <Button
+                    android:id="@+id/cognitiveButton"
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:text="Cognitive Games"
+                    android:textSize="15dp"
+                    android:background="#3498DB"
+                    android:textColor="@android:color/white"
+                    />
+            </LinearLayout>
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+                <Button
+                    android:id="@+id/motorSkillsButton"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="0.5"
+                    android:background="#6f5e97"
+                    android:text="Motor Skills"
+                    android:textColor="@android:color/white"
+                    android:textSize="15dp" />
+
+                <Button
+                    android:id="@+id/lifeStyleButton"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_weight="0.5"
+                    android:background="#fc5858"
+                    android:text="Life Style"
+                    android:textColor="@android:color/white"
+                    android:textSize="15dp" />
+        </LinearLayout>
 
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1" />
+        </LinearLayout>
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1" />
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_weight="1" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#1ABC9C"
-            android:weightSum="1">
+            android:weightSum="3"
+            >
+
             <Button
                 android:id="@+id/walkingButton"
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="200dp"
-                android:text="Walk Around"
-                android:textSize="15dp"
-                android:background="#512DA8"
-                android:textColor="@android:color/white"
-                />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#1ABC9C"
+                android:text="Walk"
+                android:textColor="@android:color/white" />
+
+
             <Button
-                android:id="@+id/cognitiveButton"
-                android:layout_weight="0.5"
+                android:id="@+id/graphButton"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:text="Cognitive Games"
-                android:textSize="15dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:background="#3498DB"
                 android:textColor="@android:color/white"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
+                android:text="Progress" />
+
             <Button
-                android:id="@+id/motorSkillsButton"
+                android:id="@+id/noteButton"
                 android:layout_width="0dp"
-                android:layout_weight="0.5"
-                android:layout_height="200dp"
-                android:text="Motor Skills"
-                android:textSize="15dp"
-                android:background="#34495E"
-                android:textColor="@android:color/white"
-                />
-            <Button
-                android:id="@+id/lifeStyleButton"
-                android:layout_weight="0.5"
-                android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:background="#512DA8"
-                android:text="Life Style"
-                android:textSize="15dp"
-                android:textColor="@android:color/white"
-                />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#6f5e97"
+                android:text="statistics"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
+        <!--<Button-->
+            <!--android:id="@+id/profileButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#16A085"-->
+            <!--android:text="Profile"-->
+            <!--android:textColor="@android:color/white" />-->
 
     </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        >
-        <Button
-            android:id="@+id/goalButton"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="#1ABC9C"
-            android:textColor="@android:color/white"
-            android:text="Goals" />
-
-
-        <Button
-            android:id="@+id/graphButton"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="#3498DB"
-            android:textColor="@android:color/white"
-            android:text="Progress" />
-
-        <Button
-            android:id="@+id/noteButton"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:background="#34495E"
-            android:text="statistics"
-            android:textColor="@android:color/white" />
-    </LinearLayout>
-
-
-    <!--<Button-->
-        <!--android:id="@+id/profileButton"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:background="#16A085"-->
-        <!--android:text="Profile"-->
-        <!--android:textColor="@android:color/white" />-->
-
-</LinearLayout>
-
+</ScrollView>

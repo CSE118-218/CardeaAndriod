@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="357dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/backuplogo2"
+        android:src="@drawable/cardea_logo"
         android:background="@color/loginBackground"/>
 
     <TextView

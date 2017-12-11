@@ -1,4 +1,4 @@
-package edu.ucsd.calab.usingextrasensorylabels;
+package edu.ucsd.calab.cardea;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("edu.ucsd.calab.usingextrasensorylabels", appContext.getPackageName());
+        assertEquals("edu.ucsd.calab.cardea", appContext.getPackageName());
     }
 }

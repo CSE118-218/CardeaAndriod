@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="edu.ucsd.calab.cardea.MainActivity"
-    tools:showIn="@layout/activity_map">
+    tools:context="edu.ucsd.calab.cardea.RadarChartActivity"
+    tools:showIn="@layout/activity_radar_page">
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <com.github.mikephil.charting.charts.RadarChart
+        android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="match_parent"
-        />
-
-
+        android:layout_height="match_parent" />
 </RelativeLayout>
