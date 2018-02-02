@@ -1,4 +1,4 @@
-# Cardea
+# Cardea -- A Ubicomp App
 
 This is a project to help motivate users who had a heart attack or stroke.
 
@@ -15,4 +15,6 @@ List of Screens: Login, Goal setting, Graphical</br>
 Our app takes a black box approach of keeping the patient’s identity anonymous.
 Only the patient and physician knows each other’s identities. We would only use a hashed ID to correlate their data.
 
+# Demo Version App Published on Google Play
+https://play.google.com/store/apps/details?id=edu.ucsd.calab.cardeaUbicomp&hl=en
 
